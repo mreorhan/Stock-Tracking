@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="29aac6351f9d4a7b88c3fe60ddba29d9" Name="Diagram1" ZoomLevel="93">
+        <EntityTypeShape EntityType="STOK_TAKIPModel.loanDetail" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="STOK_TAKIPModel.product" Width="1.5" PointX="7.5" PointY="1" />
+        <EntityTypeShape EntityType="STOK_TAKIPModel.purchase" Width="1.5" PointX="5.25" PointY="5.25" />
+        <EntityTypeShape EntityType="STOK_TAKIPModel.user" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="STOK_TAKIPModel.userType" Width="1.5" PointX="0.75" PointY="1.5" />
+        <AssociationConnector Association="STOK_TAKIPModel.FK__products__loanID__7C4F7684" />
+        <AssociationConnector Association="STOK_TAKIPModel.FK_loanDetails_users" />
+        <AssociationConnector Association="STOK_TAKIPModel.FK__products__purcha__7B5B524B" />
+        <AssociationConnector Association="STOK_TAKIPModel.FK__users__userTypeI__07C12930" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

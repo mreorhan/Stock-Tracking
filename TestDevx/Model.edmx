@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="STOK_TAKIPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="loanDetails">
+          <Key>
+            <PropertyRef Name="loanID" />
+          </Key>
+          <Property Name="loanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" />
+          <Property Name="loanByID" Type="int" />
+          <Property Name="productID" Type="int" />
+          <Property Name="loanDate" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="products">
+          <Key>
+            <PropertyRef Name="productID" />
+          </Key>
+          <Property Name="productID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productName" Type="nvarchar" MaxLength="255" />
+          <Property Name="productFeatures" Type="nvarchar" MaxLength="255" />
+          <Property Name="purchaseID" Type="int" />
+          <Property Name="isAvailable" Type="tinyint" />
+          <Property Name="loanID" Type="int" />
+        </EntityType>
+        <EntityType Name="purchases">
+          <Key>
+            <PropertyRef Name="purchaseID" />
+          </Key>
+          <Property Name="purchaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="purchasedDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="purchasedByID" Type="int" />
+          <Property Name="purchasePrice" Type="int" />
+          <Property Name="isDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="lastLogin" Type="smalldatetime" />
+          <Property Name="userTypeID" Type="int" />
+        </EntityType>
+        <EntityType Name="userTypes">
+          <Key>
+            <PropertyRef Name="userTypeID" />
+          </Key>
+          <Property Name="userTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__products__loanID__7C4F7684">
+          <End Role="loanDetails" Type="Self.loanDetails" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loanDetails">
+              <PropertyRef Name="loanID" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="loanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__products__purcha__7B5B524B">
+          <End Role="purchases" Type="Self.purchases" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="products" Type="Self.products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="purchases">
+              <PropertyRef Name="purchaseID" />
+            </Principal>
+            <Dependent Role="products">
+              <PropertyRef Name="purchaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__userTypeI__07C12930">
+          <End Role="userTypes" Type="Self.userTypes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userTypes">
+              <PropertyRef Name="userTypeID" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="userTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loanDetails_users">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="loanDetails" Type="Self.loanDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="loanDetails">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="createNewProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productName" Type="nvarchar" Mode="In" />
+          <Parameter Name="productFeatures" Type="nvarchar" Mode="In" />
+          <Parameter Name="purchasedDate" Type="nvarchar" Mode="In" />
+          <Parameter Name="purchasedByID" Type="int" Mode="In" />
+          <Parameter Name="purchasedPrice" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="STOK_TAKIPModelStoreContainer">
+          <EntitySet Name="loanDetails" EntityType="Self.loanDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="purchases" EntityType="Self.purchases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userTypes" EntityType="Self.userTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__products__loanID__7C4F7684" Association="Self.FK__products__loanID__7C4F7684">
+            <End Role="loanDetails" EntitySet="loanDetails" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__products__purcha__7B5B524B" Association="Self.FK__products__purcha__7B5B524B">
+            <End Role="purchases" EntitySet="purchases" />
+            <End Role="products" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__userTypeI__07C12930" Association="Self.FK__users__userTypeI__07C12930">
+            <End Role="userTypes" EntitySet="userTypes" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loanDetails_users" Association="Self.FK_loanDetails_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="loanDetails" EntitySet="loanDetails" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="STOK_TAKIPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="STOK_TAKIPEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="createNewProduct">
+            <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="productFeatures" Mode="In" Type="String" />
+            <Parameter Name="purchasedDate" Mode="In" Type="String" />
+            <Parameter Name="purchasedByID" Mode="In" Type="Int32" />
+            <Parameter Name="purchasedPrice" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="loanDetails" EntityType="STOK_TAKIPModel.loanDetail" />
+          <EntitySet Name="products" EntityType="STOK_TAKIPModel.product" />
+          <EntitySet Name="purchases" EntityType="STOK_TAKIPModel.purchase" />
+          <EntitySet Name="users" EntityType="STOK_TAKIPModel.user" />
+          <EntitySet Name="userTypes" EntityType="STOK_TAKIPModel.userType" />
+          <AssociationSet Name="FK__products__loanID__7C4F7684" Association="STOK_TAKIPModel.FK__products__loanID__7C4F7684">
+            <End Role="loanDetail" EntitySet="loanDetails" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loanDetails_users" Association="STOK_TAKIPModel.FK_loanDetails_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="loanDetail" EntitySet="loanDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__products__purcha__7B5B524B" Association="STOK_TAKIPModel.FK__products__purcha__7B5B524B">
+            <End Role="purchase" EntitySet="purchases" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__userTypeI__07C12930" Association="STOK_TAKIPModel.FK__users__userTypeI__07C12930">
+            <End Role="userType" EntitySet="userTypes" />
+            <End Role="user" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="loanDetail">
+          <Key>
+            <PropertyRef Name="loanID" />
+          </Key>
+          <Property Name="loanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" />
+          <Property Name="loanByID" Type="Int32" />
+          <Property Name="productID" Type="Int32" />
+          <Property Name="loanDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="products" Relationship="STOK_TAKIPModel.FK__products__loanID__7C4F7684" FromRole="loanDetail" ToRole="product" />
+          <NavigationProperty Name="user" Relationship="STOK_TAKIPModel.FK_loanDetails_users" FromRole="loanDetail" ToRole="user" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="productID" />
+          </Key>
+          <Property Name="productID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="productFeatures" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="purchaseID" Type="Int32" />
+          <Property Name="isAvailable" Type="Byte" />
+          <Property Name="loanID" Type="Int32" />
+          <NavigationProperty Name="loanDetail" Relationship="STOK_TAKIPModel.FK__products__loanID__7C4F7684" FromRole="product" ToRole="loanDetail" />
+          <NavigationProperty Name="purchase" Relationship="STOK_TAKIPModel.FK__products__purcha__7B5B524B" FromRole="product" ToRole="purchase" />
+        </EntityType>
+        <EntityType Name="purchase">
+          <Key>
+            <PropertyRef Name="purchaseID" />
+          </Key>
+          <Property Name="purchaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purchasedDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="purchasedByID" Type="Int32" />
+          <Property Name="purchasePrice" Type="Int32" />
+          <Property Name="isDeleted" Type="Boolean" />
+          <NavigationProperty Name="products" Relationship="STOK_TAKIPModel.FK__products__purcha__7B5B524B" FromRole="purchase" ToRole="product" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lastLogin" Type="DateTime" Precision="0" />
+          <Property Name="userTypeID" Type="Int32" />
+          <NavigationProperty Name="loanDetails" Relationship="STOK_TAKIPModel.FK_loanDetails_users" FromRole="user" ToRole="loanDetail" />
+          <NavigationProperty Name="userType" Relationship="STOK_TAKIPModel.FK__users__userTypeI__07C12930" FromRole="user" ToRole="userType" />
+        </EntityType>
+        <EntityType Name="userType">
+          <Key>
+            <PropertyRef Name="userTypeID" />
+          </Key>
+          <Property Name="userTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="users" Relationship="STOK_TAKIPModel.FK__users__userTypeI__07C12930" FromRole="userType" ToRole="user" />
+        </EntityType>
+        <Association Name="FK__products__loanID__7C4F7684">
+          <End Type="STOK_TAKIPModel.loanDetail" Role="loanDetail" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="STOK_TAKIPModel.product" Role="product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loanDetail">
+              <PropertyRef Name="loanID" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="loanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loanDetails_users">
+          <End Type="STOK_TAKIPModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="STOK_TAKIPModel.loanDetail" Role="loanDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="loanDetail">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__products__purcha__7B5B524B">
+          <End Type="STOK_TAKIPModel.purchase" Role="purchase" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="STOK_TAKIPModel.product" Role="product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="purchase">
+              <PropertyRef Name="purchaseID" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="purchaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__userTypeI__07C12930">
+          <End Type="STOK_TAKIPModel.userType" Role="userType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="STOK_TAKIPModel.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userType">
+              <PropertyRef Name="userTypeID" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="userTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="STOK_TAKIPModelStoreContainer" CdmEntityContainer="STOK_TAKIPEntities">
+          <FunctionImportMapping FunctionImportName="createNewProduct" FunctionName="STOK_TAKIPModel.Store.createNewProduct" />
+          <EntitySetMapping Name="loanDetails">
+            <EntityTypeMapping TypeName="STOK_TAKIPModel.loanDetail">
+              <MappingFragment StoreEntitySet="loanDetails">
+                <ScalarProperty Name="loanDate" ColumnName="loanDate" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+                <ScalarProperty Name="loanByID" ColumnName="loanByID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="loanID" ColumnName="loanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="STOK_TAKIPModel.product">
+              <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="loanID" ColumnName="loanID" />
+                <ScalarProperty Name="isAvailable" ColumnName="isAvailable" />
+                <ScalarProperty Name="purchaseID" ColumnName="purchaseID" />
+                <ScalarProperty Name="productFeatures" ColumnName="productFeatures" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="purchases">
+            <EntityTypeMapping TypeName="STOK_TAKIPModel.purchase">
+              <MappingFragment StoreEntitySet="purchases">
+                <ScalarProperty Name="isDeleted" ColumnName="isDeleted" />
+                <ScalarProperty Name="purchasePrice" ColumnName="purchasePrice" />
+                <ScalarProperty Name="purchasedByID" ColumnName="purchasedByID" />
+                <ScalarProperty Name="purchasedDate" ColumnName="purchasedDate" />
+                <ScalarProperty Name="purchaseID" ColumnName="purchaseID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="STOK_TAKIPModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="userTypeID" ColumnName="userTypeID" />
+                <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userTypes">
+            <EntityTypeMapping TypeName="STOK_TAKIPModel.userType">
+              <MappingFragment StoreEntitySet="userTypes">
+                <ScalarProperty Name="userType1" ColumnName="userType" />
+                <ScalarProperty Name="userTypeID" ColumnName="userTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
