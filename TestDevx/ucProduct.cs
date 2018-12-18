@@ -25,18 +25,26 @@ namespace TestDevx
         public ucProduct()
         {
             InitializeComponent();
-            STOK_TAKIPEntities db = new STOK_TAKIPEntities();
-            var model2 = db.products.Select(m => new {
-                m.productName,
-                m.productFeatures,
-                m.isAvailable,
-            });
-            gridControl1.DataSource = model2.ToList();
+            this.Refresh();
+           
         }
 
         private void gridControl1_Load(object sender, EventArgs e)
         {
-            
+            using (STOK_TAKIPEntities db = new STOK_TAKIPEntities()) { 
+                var model2 = db.products.Select(m => new
+                {
+                    m.productName,
+                    m.productFeatures,
+                    Is_Available = m.isAvailable == 1 ? "Yes" : "No",
+                    m.purchase.purchasedDate,
+                    m.purchase.purchasePrice,
+                    m.purchase.purchasedByID,
+                    In_Stock = m.purchase.isDeleted == true ? "Yes" : "No"
+
+                });
+            gridControl1.DataSource = model2.ToList();
+            }
         }
     }
 }

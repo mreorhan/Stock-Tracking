@@ -51,8 +51,8 @@ namespace TestDevx
                 m.p.user.name,
                 m.p.user.lastName,
                 m.p.loanDate,
+                m.l.productName,
                 m.l.productFeatures,
-                m.l.productName
             });
             gridControl1.DataSource = model2.ToList();
         }

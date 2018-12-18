@@ -22,11 +22,6 @@ namespace TestDevx
 
         }
 
-        private void accordionControlElement1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void aceCategories_Click(object sender, EventArgs e)
         {
             if (!container.Controls.Contains(ucProduct.Instance))
@@ -58,6 +53,28 @@ namespace TestDevx
                 ucAddProduct.Instance.BringToFront();
             }
             ucAddProduct.Instance.BringToFront();
+        }
+
+        private void accordionControlElement4_Click(object sender, EventArgs e)
+        {
+            if (!container.Controls.Contains(ucUsers.Instance))
+            {
+                container.Controls.Add(ucUsers.Instance);
+                ucUsers.Instance.Dock = DockStyle.Fill;
+                ucUsers.Instance.BringToFront();
+            }
+            ucUsers.Instance.BringToFront();
+        }
+
+        private void btnProductEmbezzle_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!container.Controls.Contains(ucLoantoUser.Instance))
+            {
+                container.Controls.Add(ucLoantoUser.Instance);
+                ucLoantoUser.Instance.Dock = DockStyle.Fill;
+                ucLoantoUser.Instance.BringToFront();
+            }
+            ucLoantoUser.Instance.BringToFront();
         }
     }
 }
