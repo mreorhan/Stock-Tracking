@@ -55,7 +55,7 @@
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(76, 102);
+            this.label1.Location = new System.Drawing.Point(90, 100);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 23);
             this.label1.TabIndex = 0;
@@ -64,20 +64,20 @@
             // txtProductName
             // 
             this.txtProductName.EditValue = "";
-            this.txtProductName.Location = new System.Drawing.Point(80, 134);
+            this.txtProductName.Location = new System.Drawing.Point(94, 132);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtProductName.Properties.Appearance.Options.UseFont = true;
             this.txtProductName.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtProductName.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.Optimistic;
             this.txtProductName.Properties.Mask.EditMask = "\\p{L}+";
-            this.txtProductName.Size = new System.Drawing.Size(250, 34);
+            this.txtProductName.Size = new System.Drawing.Size(280, 34);
             this.txtProductName.TabIndex = 1;
             // 
             // txtProductFeatures
             // 
             this.txtProductFeatures.EditValue = "";
-            this.txtProductFeatures.Location = new System.Drawing.Point(393, 134);
+            this.txtProductFeatures.Location = new System.Drawing.Point(440, 132);
             this.txtProductFeatures.Name = "txtProductFeatures";
             this.txtProductFeatures.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtProductFeatures.Properties.Appearance.Options.UseFont = true;
@@ -92,7 +92,7 @@
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(389, 102);
+            this.label2.Location = new System.Drawing.Point(436, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(131, 23);
             this.label2.TabIndex = 2;
@@ -100,7 +100,7 @@
             // 
             // btnAddPRoduct
             // 
-            this.btnAddPRoduct.Location = new System.Drawing.Point(699, 352);
+            this.btnAddPRoduct.Location = new System.Drawing.Point(746, 343);
             this.btnAddPRoduct.Name = "btnAddPRoduct";
             this.btnAddPRoduct.Size = new System.Drawing.Size(164, 49);
             this.btnAddPRoduct.TabIndex = 4;
@@ -110,7 +110,7 @@
             // datePurchasedDate
             // 
             this.datePurchasedDate.EditValue = null;
-            this.datePurchasedDate.Location = new System.Drawing.Point(80, 252);
+            this.datePurchasedDate.Location = new System.Drawing.Point(94, 250);
             this.datePurchasedDate.Name = "datePurchasedDate";
             this.datePurchasedDate.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.8F);
             this.datePurchasedDate.Properties.Appearance.Options.UseFont = true;
@@ -123,7 +123,7 @@
             this.datePurchasedDate.Properties.Mask.BeepOnError = true;
             this.datePurchasedDate.Properties.Mask.EditMask = "f";
             this.datePurchasedDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
-            this.datePurchasedDate.Size = new System.Drawing.Size(250, 34);
+            this.datePurchasedDate.Size = new System.Drawing.Size(280, 34);
             this.datePurchasedDate.TabIndex = 5;
             // 
             // label3
@@ -131,7 +131,7 @@
             this.label3.AutoSize = true;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(76, 217);
+            this.label3.Location = new System.Drawing.Point(90, 215);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(141, 23);
             this.label3.TabIndex = 6;
@@ -140,7 +140,7 @@
             // txtPrice
             // 
             this.txtPrice.EditValue = "";
-            this.txtPrice.Location = new System.Drawing.Point(393, 252);
+            this.txtPrice.Location = new System.Drawing.Point(440, 250);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtPrice.Properties.Appearance.Options.UseFont = true;
@@ -157,7 +157,7 @@
             this.label4.AutoSize = true;
             this.label4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(389, 220);
+            this.label4.Location = new System.Drawing.Point(436, 218);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 23);
             this.label4.TabIndex = 7;
@@ -166,7 +166,7 @@
             // txtPiece
             // 
             this.txtPiece.EditValue = "";
-            this.txtPiece.Location = new System.Drawing.Point(619, 252);
+            this.txtPiece.Location = new System.Drawing.Point(790, 250);
             this.txtPiece.Name = "txtPiece";
             this.txtPiece.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtPiece.Properties.Appearance.Options.UseFont = true;
@@ -183,7 +183,7 @@
             this.label5.AutoSize = true;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(615, 220);
+            this.label5.Location = new System.Drawing.Point(786, 218);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 23);
             this.label5.TabIndex = 9;

@@ -50,10 +50,18 @@ namespace TestDevx
                 var purchasedPrice = new SqlParameter("@purchasedPrice", purc.purchasePrice);
                 var pieces = new SqlParameter("@pieces", p.pieces);
 
-                context.Database.ExecuteSqlCommand("exec createNewProduct @productName , @productFeatures , @purchasedDate , @purchasedByID, @purchasedPrice, @pieces",
-                productName, productFeatures, purchasedDate, purchasedByID, purchasedPrice, pieces);
+                try
+                {
+                    context.Database.ExecuteSqlCommand("exec createNewProduct @productName , @productFeatures , @purchasedDate , @purchasedByID, @purchasedPrice, @pieces",
+                    productName, productFeatures, purchasedDate, purchasedByID, purchasedPrice, pieces);
 
-            }
+                    MessageBox.Show("The transaction was successful!");
+                }
+                catch {
+                    MessageBox.Show("The transaction was failed!");
+                }
+
+                }
 
         }
     }

@@ -26,6 +26,7 @@ namespace TestDevx
         {
             InitializeComponent();
             this.Refresh();
+            gridControl1.Refresh();
            
         }
 
@@ -36,12 +37,11 @@ namespace TestDevx
                 {
                     m.productName,
                     m.productFeatures,
-                    Is_Available = m.isAvailable == 1 ? "Yes" : "No",
                     m.purchase.purchasedDate,
                     m.purchase.purchasePrice,
                     m.purchase.purchasedByID,
                     m.pieces,
-                    In_Stock = m.purchase.isDeleted == true ? "Yes" : "No"
+                    In_Stock = m.purchase.isDeleted == false ? "Yes" : "No"
 
                 });
             gridControl1.DataSource = model2.ToList();

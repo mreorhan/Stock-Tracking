@@ -14,6 +14,7 @@
           <Property Name="loanByID" Type="int" />
           <Property Name="productID" Type="int" />
           <Property Name="loanDate" Type="smalldatetime" />
+          <Property Name="loanPieces" Type="int" />
         </EntityType>
         <EntityType Name="products">
           <Key>
@@ -24,7 +25,6 @@
           <Property Name="productFeatures" Type="nvarchar" MaxLength="255" />
           <Property Name="purchaseID" Type="int" />
           <Property Name="isAvailable" Type="tinyint" />
-          <Property Name="loanID" Type="int" />
           <Property Name="pieces" Type="int" />
         </EntityType>
         <EntityType Name="purchases">
@@ -56,20 +56,6 @@
           <Property Name="userTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userType" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__products__loanID__7C4F7684">
-          <End Role="loanDetails" Type="Self.loanDetails" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="products" Type="Self.products" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="loanDetails">
-              <PropertyRef Name="loanID" />
-            </Principal>
-            <Dependent Role="products">
-              <PropertyRef Name="loanID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__products__purcha__7B5B524B">
           <End Role="purchases" Type="Self.purchases" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -98,6 +84,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_loanDetails_products">
+          <End Role="products" Type="Self.products" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="loanDetails" Type="Self.loanDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="products">
+              <PropertyRef Name="productID" />
+            </Principal>
+            <Dependent Role="loanDetails">
+              <PropertyRef Name="productID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_loanDetails_users">
           <End Role="users" Type="Self.users" Multiplicity="0..1" />
           <End Role="loanDetails" Type="Self.loanDetails" Multiplicity="*" />
@@ -110,6 +110,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="addLoan" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+          <Parameter Name="loanByID" Type="int" Mode="In" />
+          <Parameter Name="productID" Type="int" Mode="In" />
+          <Parameter Name="loanDate" Type="smalldatetime" Mode="In" />
+          <Parameter Name="loanPieces" Type="int" Mode="In" />
+        </Function>
         <Function Name="createNewProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productName" Type="nvarchar" Mode="In" />
           <Parameter Name="productFeatures" Type="nvarchar" Mode="In" />
@@ -124,10 +131,6 @@
           <EntitySet Name="purchases" EntityType="Self.purchases" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userTypes" EntityType="Self.userTypes" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__products__loanID__7C4F7684" Association="Self.FK__products__loanID__7C4F7684">
-            <End Role="loanDetails" EntitySet="loanDetails" />
-            <End Role="products" EntitySet="products" />
-          </AssociationSet>
           <AssociationSet Name="FK__products__purcha__7B5B524B" Association="Self.FK__products__purcha__7B5B524B">
             <End Role="purchases" EntitySet="purchases" />
             <End Role="products" EntitySet="products" />
@@ -135,6 +138,10 @@
           <AssociationSet Name="FK__users__userTypeI__07C12930" Association="Self.FK__users__userTypeI__07C12930">
             <End Role="userTypes" EntitySet="userTypes" />
             <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loanDetails_products" Association="Self.FK_loanDetails_products">
+            <End Role="products" EntitySet="products" />
+            <End Role="loanDetails" EntitySet="loanDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_loanDetails_users" Association="Self.FK_loanDetails_users">
             <End Role="users" EntitySet="users" />
@@ -159,9 +166,9 @@
           <EntitySet Name="purchases" EntityType="STOK_TAKIPModel.purchase" />
           <EntitySet Name="users" EntityType="STOK_TAKIPModel.user" />
           <EntitySet Name="userTypes" EntityType="STOK_TAKIPModel.userType" />
-          <AssociationSet Name="FK__products__loanID__7C4F7684" Association="STOK_TAKIPModel.FK__products__loanID__7C4F7684">
-            <End Role="loanDetail" EntitySet="loanDetails" />
+          <AssociationSet Name="FK_loanDetails_products" Association="STOK_TAKIPModel.FK_loanDetails_products">
             <End Role="product" EntitySet="products" />
+            <End Role="loanDetail" EntitySet="loanDetails" />
           </AssociationSet>
           <AssociationSet Name="FK_loanDetails_users" Association="STOK_TAKIPModel.FK_loanDetails_users">
             <End Role="user" EntitySet="users" />
@@ -175,7 +182,14 @@
             <End Role="userType" EntitySet="userTypes" />
             <End Role="user" EntitySet="users" />
           </AssociationSet>
-        </EntityContainer>
+          <FunctionImport Name="addLoan">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="loanByID" Mode="In" Type="Int32" />
+            <Parameter Name="productID" Mode="In" Type="Int32" />
+            <Parameter Name="loanDate" Mode="In" Type="DateTime" />
+            <Parameter Name="loanPieces" Mode="In" Type="Int32" />
+          </FunctionImport>
+          </EntityContainer>
         <EntityType Name="loanDetail">
           <Key>
             <PropertyRef Name="loanID" />
@@ -185,7 +199,8 @@
           <Property Name="loanByID" Type="Int32" />
           <Property Name="productID" Type="Int32" />
           <Property Name="loanDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="products" Relationship="STOK_TAKIPModel.FK__products__loanID__7C4F7684" FromRole="loanDetail" ToRole="product" />
+          <Property Name="loanPieces" Type="Int32" />
+          <NavigationProperty Name="product" Relationship="STOK_TAKIPModel.FK_loanDetails_products" FromRole="loanDetail" ToRole="product" />
           <NavigationProperty Name="user" Relationship="STOK_TAKIPModel.FK_loanDetails_users" FromRole="loanDetail" ToRole="user" />
         </EntityType>
         <EntityType Name="product">
@@ -197,10 +212,9 @@
           <Property Name="productFeatures" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="purchaseID" Type="Int32" />
           <Property Name="isAvailable" Type="Byte" />
-          <Property Name="loanID" Type="Int32" />
-          <NavigationProperty Name="loanDetail" Relationship="STOK_TAKIPModel.FK__products__loanID__7C4F7684" FromRole="product" ToRole="loanDetail" />
-          <NavigationProperty Name="purchase" Relationship="STOK_TAKIPModel.FK__products__purcha__7B5B524B" FromRole="product" ToRole="purchase" />
           <Property Name="pieces" Type="Int32" />
+          <NavigationProperty Name="loanDetails" Relationship="STOK_TAKIPModel.FK_loanDetails_products" FromRole="product" ToRole="loanDetail" />
+          <NavigationProperty Name="purchase" Relationship="STOK_TAKIPModel.FK__products__purcha__7B5B524B" FromRole="product" ToRole="purchase" />
         </EntityType>
         <EntityType Name="purchase">
           <Key>
@@ -235,17 +249,17 @@
           <Property Name="userType1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="users" Relationship="STOK_TAKIPModel.FK__users__userTypeI__07C12930" FromRole="userType" ToRole="user" />
         </EntityType>
-        <Association Name="FK__products__loanID__7C4F7684">
-          <End Type="STOK_TAKIPModel.loanDetail" Role="loanDetail" Multiplicity="0..1">
+        <Association Name="FK_loanDetails_products">
+          <End Type="STOK_TAKIPModel.product" Role="product" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="STOK_TAKIPModel.product" Role="product" Multiplicity="*" />
+          <End Type="STOK_TAKIPModel.loanDetail" Role="loanDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="loanDetail">
-              <PropertyRef Name="loanID" />
+            <Principal Role="product">
+              <PropertyRef Name="productID" />
             </Principal>
-            <Dependent Role="product">
-              <PropertyRef Name="loanID" />
+            <Dependent Role="loanDetail">
+              <PropertyRef Name="productID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -299,6 +313,7 @@
           <EntitySetMapping Name="loanDetails">
             <EntityTypeMapping TypeName="STOK_TAKIPModel.loanDetail">
               <MappingFragment StoreEntitySet="loanDetails">
+                <ScalarProperty Name="loanPieces" ColumnName="loanPieces" />
                 <ScalarProperty Name="loanDate" ColumnName="loanDate" />
                 <ScalarProperty Name="productID" ColumnName="productID" />
                 <ScalarProperty Name="loanByID" ColumnName="loanByID" />
@@ -311,7 +326,6 @@
             <EntityTypeMapping TypeName="STOK_TAKIPModel.product">
               <MappingFragment StoreEntitySet="products">
                 <ScalarProperty Name="pieces" ColumnName="pieces" />
-                <ScalarProperty Name="loanID" ColumnName="loanID" />
                 <ScalarProperty Name="isAvailable" ColumnName="isAvailable" />
                 <ScalarProperty Name="purchaseID" ColumnName="purchaseID" />
                 <ScalarProperty Name="productFeatures" ColumnName="productFeatures" />
@@ -352,7 +366,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <FunctionImportMapping FunctionImportName="addLoan" FunctionName="STOK_TAKIPModel.Store.addLoan" />
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

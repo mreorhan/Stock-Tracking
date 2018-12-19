@@ -36,25 +36,31 @@ namespace TestDevx
         private void ucLoans_Load(object sender, EventArgs e)
         {
             STOK_TAKIPEntities db = new STOK_TAKIPEntities();
-            var model = from p in db.products
-                        join l in db.loanDetails on p.loanID equals l.loanID
+            var model = from l in db.loanDetails
+                        join p in db.products on l.productID equals p.productID
+                        join u in db.users on l.userID equals u.id
                         select new
                         {
-                            name = p.productName,
-                            loan = l.loanID
-
+                           p.productName,
+                           p.pieces,
+                          Who= u.name+" "+u.lastName,
+                          l.loanDate,
+                         How_Many= l.loanPieces
                         };
-            var model2 = db.products
-                .Join(db.loanDetails, l => l.loanID, p => p.loanID,
+            var model2 = db.loanDetails
+                .Join(db.products, p => p.productID, l => l.productID,
                 (l, p) => new { l, p })
+
+                .Join(db.users, u => u.l.userID, p => p.id,
+                (u, l) => new { u, l })
+
                 .Select(m => new {
-                m.p.user.name,
-                m.p.user.lastName,
-                m.p.loanDate,
-                m.l.productName,
-                m.l.productFeatures,
+                    m.l.name,
+                    m.l.lastName,
+                    
+
             });
-            gridControl1.DataSource = model2.ToList();
+            gridControl1.DataSource = model.ToList();
         }
     }
 }

@@ -14,15 +14,21 @@ namespace TestDevx
     
     public partial class product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public product()
+        {
+            this.loanDetails = new HashSet<loanDetail>();
+        }
+    
         public int productID { get; set; }
         public string productName { get; set; }
         public string productFeatures { get; set; }
         public Nullable<int> purchaseID { get; set; }
         public Nullable<byte> isAvailable { get; set; }
-        public Nullable<int> loanID { get; set; }
         public Nullable<int> pieces { get; set; }
     
-        public virtual loanDetail loanDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<loanDetail> loanDetails { get; set; }
         public virtual purchase purchase { get; set; }
     }
 }

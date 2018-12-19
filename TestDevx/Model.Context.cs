@@ -61,5 +61,30 @@ namespace TestDevx
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("createNewProduct", productNameParameter, productFeaturesParameter, purchasedDateParameter, purchasedByIDParameter, purchasedPriceParameter, piecesParameter);
         }
+    
+        public virtual int addLoan(Nullable<int> userID, Nullable<int> loanByID, Nullable<int> productID, Nullable<System.DateTime> loanDate, Nullable<int> loanPieces)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(int));
+    
+            var loanByIDParameter = loanByID.HasValue ?
+                new ObjectParameter("loanByID", loanByID) :
+                new ObjectParameter("loanByID", typeof(int));
+    
+            var productIDParameter = productID.HasValue ?
+                new ObjectParameter("productID", productID) :
+                new ObjectParameter("productID", typeof(int));
+    
+            var loanDateParameter = loanDate.HasValue ?
+                new ObjectParameter("loanDate", loanDate) :
+                new ObjectParameter("loanDate", typeof(System.DateTime));
+    
+            var loanPiecesParameter = loanPieces.HasValue ?
+                new ObjectParameter("loanPieces", loanPieces) :
+                new ObjectParameter("loanPieces", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addLoan", userIDParameter, loanByIDParameter, productIDParameter, loanDateParameter, loanPiecesParameter);
+        }
     }
 }
