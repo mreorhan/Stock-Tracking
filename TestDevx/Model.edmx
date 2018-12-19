@@ -25,6 +25,7 @@
           <Property Name="purchaseID" Type="int" />
           <Property Name="isAvailable" Type="tinyint" />
           <Property Name="loanID" Type="int" />
+          <Property Name="pieces" Type="int" />
         </EntityType>
         <EntityType Name="purchases">
           <Key>
@@ -115,6 +116,7 @@
           <Parameter Name="purchasedDate" Type="nvarchar" Mode="In" />
           <Parameter Name="purchasedByID" Type="int" Mode="In" />
           <Parameter Name="purchasedPrice" Type="int" Mode="In" />
+          <Parameter Name="pieces" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="STOK_TAKIPModelStoreContainer">
           <EntitySet Name="loanDetails" EntityType="Self.loanDetails" Schema="dbo" store:Type="Tables" />
@@ -150,6 +152,7 @@
             <Parameter Name="purchasedDate" Mode="In" Type="String" />
             <Parameter Name="purchasedByID" Mode="In" Type="Int32" />
             <Parameter Name="purchasedPrice" Mode="In" Type="Int32" />
+            <Parameter Name="pieces" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="loanDetails" EntityType="STOK_TAKIPModel.loanDetail" />
           <EntitySet Name="products" EntityType="STOK_TAKIPModel.product" />
@@ -197,6 +200,7 @@
           <Property Name="loanID" Type="Int32" />
           <NavigationProperty Name="loanDetail" Relationship="STOK_TAKIPModel.FK__products__loanID__7C4F7684" FromRole="product" ToRole="loanDetail" />
           <NavigationProperty Name="purchase" Relationship="STOK_TAKIPModel.FK__products__purcha__7B5B524B" FromRole="product" ToRole="purchase" />
+          <Property Name="pieces" Type="Int32" />
         </EntityType>
         <EntityType Name="purchase">
           <Key>
@@ -306,6 +310,7 @@
           <EntitySetMapping Name="products">
             <EntityTypeMapping TypeName="STOK_TAKIPModel.product">
               <MappingFragment StoreEntitySet="products">
+                <ScalarProperty Name="pieces" ColumnName="pieces" />
                 <ScalarProperty Name="loanID" ColumnName="loanID" />
                 <ScalarProperty Name="isAvailable" ColumnName="isAvailable" />
                 <ScalarProperty Name="purchaseID" ColumnName="purchaseID" />

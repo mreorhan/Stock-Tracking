@@ -38,6 +38,7 @@ namespace TestDevx
             p.productName = txtProductName.Text;
             p.productFeatures = txtProductFeatures.Text;
             purc.purchasedDate = datePurchasedDate.Text;
+            p.pieces = int.Parse(txtPiece.Text);
             purc.purchasedByID = purchaseID;
             purc.purchasePrice = int.Parse(txtPrice.Text);
             using (var context = new STOK_TAKIPEntities())
@@ -47,9 +48,10 @@ namespace TestDevx
                 var purchasedDate = new SqlParameter("@purchasedDate", purc.purchasedDate);
                 var purchasedByID = new SqlParameter("@purchasedByID", purc.purchasedByID);
                 var purchasedPrice = new SqlParameter("@purchasedPrice", purc.purchasePrice);
+                var pieces = new SqlParameter("@pieces", p.pieces);
 
-                context.Database.ExecuteSqlCommand("exec createNewProduct @productName , @productFeatures , @purchasedDate , @purchasedByID, @purchasedPrice",
-                productName, productFeatures, purchasedDate, purchasedByID, purchasedPrice);
+                context.Database.ExecuteSqlCommand("exec createNewProduct @productName , @productFeatures , @purchasedDate , @purchasedByID, @purchasedPrice, @pieces",
+                productName, productFeatures, purchasedDate, purchasedByID, purchasedPrice, pieces);
 
             }
 

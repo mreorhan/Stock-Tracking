@@ -40,6 +40,7 @@ namespace TestDevx
                     m.purchase.purchasedDate,
                     m.purchase.purchasePrice,
                     m.purchase.purchasedByID,
+                    m.pieces,
                     In_Stock = m.purchase.isDeleted == true ? "Yes" : "No"
 
                 });

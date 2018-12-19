@@ -30,12 +30,12 @@ namespace TestDevx
             STOK_TAKIPEntities db = new STOK_TAKIPEntities();
             foreach (var item in db.users)
             {
-                comboBox1.Items.Add(item.id+" - "+item.name +" " + item.lastName);
+                cbUser.Items.Add(item.id+" - "+item.name +" " + item.lastName);
             }
             foreach (var item in db.products)
             {
                 if(item.isAvailable==1)
-                    cbLoans.Items.Add(item.productID + " - " + item.productName);
+                    cbProducts.Items.Add(item.productID + " - " + item.productName);
             }
         }
 
@@ -46,8 +46,20 @@ namespace TestDevx
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] list = comboBox1.SelectedItem.ToString().Split('-');
+            string[] list = cbUser.SelectedItem.ToString().Split('-');
             MessageBox.Show(list[0]);
+        }
+
+        private void btnAddLoan_Click(object sender, EventArgs e)
+        {
+            string[] user = cbUser.SelectedItem.ToString().Split('-');
+            string[] product = cbProducts.SelectedItem.ToString().Split('-');
+            loanDetail l = new loanDetail();
+            l.productID = int.Parse(product[0]);
+            l.loanDate = DateTime.Now;
+            l.userID = int.Parse(user[0]);
+            l.loanByID = 1; // sonradan değiştir.
+            
         }
     }
 }

@@ -20,6 +20,7 @@ namespace TestDevx
         public Nullable<int> purchaseID { get; set; }
         public Nullable<byte> isAvailable { get; set; }
         public Nullable<int> loanID { get; set; }
+        public Nullable<int> pieces { get; set; }
     
         public virtual loanDetail loanDetail { get; set; }
         public virtual purchase purchase { get; set; }

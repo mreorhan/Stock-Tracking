@@ -39,12 +39,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtPrice = new DevExpress.XtraEditors.TextEdit();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtPiece = new DevExpress.XtraEditors.TextEdit();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductFeatures.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datePurchasedDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datePurchasedDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPiece.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -160,10 +163,38 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Ürün Fiyatı:";
             // 
+            // txtPiece
+            // 
+            this.txtPiece.EditValue = "";
+            this.txtPiece.Location = new System.Drawing.Point(619, 252);
+            this.txtPiece.Name = "txtPiece";
+            this.txtPiece.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.txtPiece.Properties.Appearance.Options.UseFont = true;
+            this.txtPiece.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
+            this.txtPiece.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.Optimistic;
+            this.txtPiece.Properties.Mask.BeepOnError = true;
+            this.txtPiece.Properties.Mask.EditMask = "\\d+";
+            this.txtPiece.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtPiece.Size = new System.Drawing.Size(120, 34);
+            this.txtPiece.TabIndex = 10;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(615, 220);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 23);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Ürün Adedi:";
+            // 
             // ucAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtPiece);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -181,6 +212,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.datePurchasedDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datePurchasedDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPiece.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -198,5 +230,7 @@
         private System.Windows.Forms.Label label3;
         private DevExpress.XtraEditors.TextEdit txtPrice;
         private System.Windows.Forms.Label label4;
+        private DevExpress.XtraEditors.TextEdit txtPiece;
+        private System.Windows.Forms.Label label5;
     }
 }

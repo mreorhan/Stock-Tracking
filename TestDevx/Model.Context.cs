@@ -33,7 +33,7 @@ namespace TestDevx
         public virtual DbSet<user> users { get; set; }
         public virtual DbSet<userType> userTypes { get; set; }
     
-        public virtual int createNewProduct(string productName, string productFeatures, string purchasedDate, Nullable<int> purchasedByID, Nullable<int> purchasedPrice)
+        public virtual int createNewProduct(string productName, string productFeatures, string purchasedDate, Nullable<int> purchasedByID, Nullable<int> purchasedPrice, Nullable<int> pieces)
         {
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
@@ -55,7 +55,11 @@ namespace TestDevx
                 new ObjectParameter("purchasedPrice", purchasedPrice) :
                 new ObjectParameter("purchasedPrice", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("createNewProduct", productNameParameter, productFeaturesParameter, purchasedDateParameter, purchasedByIDParameter, purchasedPriceParameter);
+            var piecesParameter = pieces.HasValue ?
+                new ObjectParameter("pieces", pieces) :
+                new ObjectParameter("pieces", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("createNewProduct", productNameParameter, productFeaturesParameter, purchasedDateParameter, purchasedByIDParameter, purchasedPriceParameter, piecesParameter);
         }
     }
 }
