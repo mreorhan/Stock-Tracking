@@ -32,7 +32,11 @@
             this.cbProducts = new System.Windows.Forms.ComboBox();
             this.btnRemoveProduct = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.gridRegistered = new DevExpress.XtraGrid.GridControl();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridRegistered)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -85,10 +89,27 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(911, 75);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
+            // gridRegistered
+            // 
+            this.gridRegistered.Location = new System.Drawing.Point(93, 193);
+            this.gridRegistered.MainView = this.gridView1;
+            this.gridRegistered.Name = "gridRegistered";
+            this.gridRegistered.Size = new System.Drawing.Size(738, 200);
+            this.gridRegistered.TabIndex = 9;
+            this.gridRegistered.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            this.gridRegistered.Visible = false;
+            // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.gridRegistered;
+            this.gridView1.Name = "gridView1";
+            // 
             // ucRemoveProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.gridRegistered);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbProducts);
@@ -96,6 +117,8 @@
             this.Size = new System.Drawing.Size(911, 487);
             this.Load += new System.EventHandler(this.ucRemoveProduct_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridRegistered)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,5 +130,7 @@
         private System.Windows.Forms.ComboBox cbProducts;
         private DevExpress.XtraEditors.SimpleButton btnRemoveProduct;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private DevExpress.XtraGrid.GridControl gridRegistered;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
     }
 }

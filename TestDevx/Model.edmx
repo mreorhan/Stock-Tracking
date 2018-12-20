@@ -125,6 +125,13 @@
           <Parameter Name="purchasedPrice" Type="int" Mode="In" />
           <Parameter Name="pieces" Type="int" Mode="In" />
         </Function>
+        <Function Name="list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="loginCheck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="removeProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="int" Mode="In" />
         </Function>
@@ -193,6 +200,13 @@
             <Parameter Name="loanPieces" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="removeProduct">
+          <Parameter Name="productID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="loginCheck" ReturnType="Collection(STOK_TAKIPModel.loginCheck_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="list" ReturnType="Collection(STOK_TAKIPModel.list_Result)">
           <Parameter Name="productID" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
@@ -309,6 +323,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <ComplexType Name="loginCheck_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="lastLogin" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="userTypeID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="list_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="Product_Name" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="Registered_Date" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="How_Many_" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -374,6 +403,29 @@
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="addLoan" FunctionName="STOK_TAKIPModel.Store.addLoan" />
           <FunctionImportMapping FunctionImportName="removeProduct" FunctionName="STOK_TAKIPModel.Store.removeProduct" />
+          <FunctionImportMapping FunctionImportName="loginCheck" FunctionName="STOK_TAKIPModel.Store.loginCheck">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="STOK_TAKIPModel.loginCheck_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
+                <ScalarProperty Name="userTypeID" ColumnName="userTypeID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="list" FunctionName="STOK_TAKIPModel.Store.list">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="STOK_TAKIPModel.list_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+                <ScalarProperty Name="Registered_Date" ColumnName="Registered Date" />
+                <ScalarProperty Name="How_Many_" ColumnName="How Many?" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

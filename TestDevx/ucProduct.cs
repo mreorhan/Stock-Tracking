@@ -45,9 +45,10 @@ namespace TestDevx
                     m.purchase.purchasePrice,
                     m.purchase.purchasedByID,
                     m.pieces,
+                    m.isAvailable,
                     In_Stock = m.purchase.isDeleted == false ? "Yes" : "No"
 
-                });
+                }).Where(k=>k.isAvailable==1);
             gridControl1.DataSource = model2.ToList();
             }
         }

@@ -12,6 +12,12 @@ namespace TestDevx
 {
     public partial class frm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
+        private string[] getUser;
+        public string[] GetUser
+        {
+            get { return getUser; }
+            set { getUser = value; }
+        }
         public frm()
         {
             InitializeComponent();
@@ -21,11 +27,7 @@ namespace TestDevx
              * you cannot create a generic singleton factory - it undermines the pattern itself.
              */
         }
-
-        private void fluentDesignFormContainer1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void aceCategories_Click(object sender, EventArgs e)
         {
@@ -102,6 +104,30 @@ namespace TestDevx
                 ucRemoveProduct.Instance.BringToFront();
             }
             ucRemoveProduct.Instance.BringToFront();
+        }
+        
+
+        private void btnLogout_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            this.Visible = false;
+            formLogin login = new formLogin();
+            login.ShowDialog();
+        }
+
+        private void frm_Load(object sender, EventArgs e)
+        {
+            lblName.Text = getUser[1].ToString() + " " + getUser[2].ToString() + "(" + getUser[0].ToString() + ")";
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!container.Controls.Contains(ucAccount.Instance))
+            {
+                container.Controls.Add(ucAccount.Instance);
+                ucAccount.Instance.Dock = DockStyle.Fill;
+                ucAccount.Instance.BringToFront();
+            }
+            ucAccount.Instance.BringToFront();
         }
     }
 }

@@ -28,10 +28,6 @@ namespace TestDevx
             InitializeComponent();
         }
 
-        private void gridControl1_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void ucUsers_Load(object sender, EventArgs e)
         {
@@ -39,10 +35,11 @@ namespace TestDevx
             {
                 var model = db.users.Select(m => new
                 {
-                    m.username,
-                    m.name,
-                    m.lastName,
-                    User_Type = m.userType.userType1
+                   Username= m.username,
+                   Name= m.name,
+                   Last_Name = m.lastName,
+                   User_Type = m.userType.userType1,
+                   m.lastLogin
                 });
                 gridControl1.DataSource = model.ToList();
             }

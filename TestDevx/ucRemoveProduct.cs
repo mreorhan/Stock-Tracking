@@ -24,6 +24,10 @@ namespace TestDevx
                     _instance = new ucRemoveProduct();
                 return _instance;
             }
+            set
+            {
+                _instance = value;
+            }
         }
         public ucRemoveProduct()
         {
@@ -33,13 +37,13 @@ namespace TestDevx
         }
         public void getData()
         {
+            // Refresh Items After Deleted Product
             cbProducts.Items.Clear();
             STOK_TAKIPEntities db = new STOK_TAKIPEntities();
             foreach (var item in db.products)
             {
                 if (item.isAvailable == 1)
                 {
-                   
                     cbProducts.Items.Add(item.productName);
                     productList.Add(item);
                 }
@@ -57,11 +61,13 @@ namespace TestDevx
                 var result = productList.Find(x => x.productName == cbProducts.SelectedItem.ToString());
                 try
                 {
+                    //Delete Product from stored procedure
                     var productID = new SqlParameter("@productID", result.productID);
-                    context.Database.ExecuteSqlCommand("exec removeProduct @productID",
-                    productID);
+                    context.Database.ExecuteSqlCommand("exec removeProduct @productID",productID);
                     MessageBox.Show("The transaction was successful!");
                     getData();
+                    gridRegistered.Visible = false;
+                    //Refresh related instance
                     ucProduct.Instance = null;
                     ucLoantoUser.Instance = null;
                 }
@@ -69,9 +75,12 @@ namespace TestDevx
                 {
                     switch (err.Number)
                     {
+                        //If the product registered before
                         case 35100:
                             MessageBox.Show("There are users associated with this product!");
-                            break;
+                            gridRegistered.Visible = true;
+                            gridRegistered.DataSource = context.list(result.productID).ToList();
+                        break;
                         default:
                             MessageBox.Show("This product is not deleting!");
                             throw;

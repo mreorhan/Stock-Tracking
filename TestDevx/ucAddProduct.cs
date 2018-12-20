@@ -57,6 +57,7 @@ namespace TestDevx
 
                     MessageBox.Show("The transaction was successful!");
                     ucProduct.Instance = null;
+                    ucRemoveProduct.Instance = null;
                 }
                 catch {
                     MessageBox.Show("The transaction was failed!");

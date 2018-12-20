@@ -95,5 +95,27 @@ namespace TestDevx
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("removeProduct", productIDParameter);
         }
+    
+        public virtual ObjectResult<loginCheck_Result> loginCheck(string username, string password)
+        {
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<loginCheck_Result>("loginCheck", usernameParameter, passwordParameter);
+        }
+    
+        public virtual ObjectResult<list_Result> list(Nullable<int> productID)
+        {
+            var productIDParameter = productID.HasValue ?
+                new ObjectParameter("productID", productID) :
+                new ObjectParameter("productID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<list_Result>("list", productIDParameter);
+        }
     }
 }
