@@ -57,6 +57,7 @@
             this.Controls.Add(this.gridUnused);
             this.Name = "ucUnusedProducts";
             this.Size = new System.Drawing.Size(726, 475);
+            this.Load += new System.EventHandler(this.ucUnusedProducts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridUnused)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);

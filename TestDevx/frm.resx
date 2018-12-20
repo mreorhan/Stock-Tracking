@@ -356,6 +356,17 @@
         MTQsMjJ6IiBmaWxsPSIjNzI3MjcyIiBjbGFzcz0iQmxhY2siIC8+DQogIDwvZz4NCjwvc3ZnPgs=
 </value>
   </data>
+  <data name="acUnused.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAA0dEVYdFRpdGxlAERlbGV0ZTtEZWxldGVJdGVtO1Jl
+        bW92ZTtSZW1vdmVJdGVtO0l0ZW07TWludXNY6xfiAAAA2klEQVRYR+2SMQ7CMBAE/TiqfIM/8AK3rqlc
+        8yWaVEg8AgqzZyXSxXdCMToujVcaRSyxd4qEUsqhqKUnaumJWnqilp6o5UqMsXTyABOgsyrthig4OIDH
+        /tD7KaV3znnCz/YuH4F5nlUJNwGKJuEqQGkl3AUoi8SLJA4RoKwS+K9KoNogCs4vAl94ArEhCg4dtMoi
+        ITZEwbEWQMSGKDhDYAhYC1xu17CCqrIZbBkClgKUvwncz6dukLohRjlDwPobQMSGKDiWAnQX6P8IjaE7
+        9wt4oJaeqKUfJXwAUi3OfidkfBsAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="barButtonItem2.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjIsIFZlcnNpb249MTguMi4z
@@ -434,17 +445,6 @@
         MC45LTAuNUwyMS42LDE0LjV6ICAgTTI4LDI1VjVjMC0wLjYtMC41LTEtMS0xaC0yYy0wLjUsMC0xLDAu
         NC0xLDF2MjBjMCwwLjUsMC41LDEsMSwxaDJDMjcuNSwyNiwyOCwyNS41LDI4LDI1eiIgZmlsbD0iIzEx
         NzdENyIgY2xhc3M9IkJsdWUiIC8+DQo8L3N2Zz4L
-</value>
-  </data>
-  <data name="accordionControlElement4.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAANHRFWHRUaXRsZQBEZWxldGU7
-        RGVsZXRlSXRlbTtSZW1vdmU7UmVtb3ZlSXRlbTtJdGVtO01pbnVzWOsX4gAAANpJREFUWEftkjEOwjAQ
-        BP04qnyDP/ACt66pXPMlmlRIPAIKs2cl0sV3QjE6Lo1XGkUssXeKhFLKoailJ2rpiVp6opaeqOVKjLF0
-        8gAToLMq7YYoODiAx/7Q+ymld855ws/2Lh+BeZ5VCTcBiibhKkBpJdwFKIvEiyQOEaCsEvivSqDaIArO
-        LwJfeAKxIQoOHbTKIiE2RMGxFkDEhig4Q2AIWAtcbtewgqqyGWwZApYClL8J3M+nbpC6IUY5Q8D6G0DE
-        hig4lgJ0F+j/CI2hO/cLeKCWnqilHyV8AFItzn4nZHwbAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

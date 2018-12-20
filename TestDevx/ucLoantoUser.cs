@@ -24,6 +24,10 @@ namespace TestDevx
                     _instance = new ucLoantoUser();
                 return _instance;
             }
+            set
+            {
+                _instance = value;
+            }
         }
         
         public ucLoantoUser()
@@ -86,6 +90,7 @@ namespace TestDevx
                         userID, loanByID, productID, loanDate, pieces);
                         MessageBox.Show("The transaction was successful!");
                         txtPiece.Text = "";
+                        ucLoans.Instance = null;
                     }
                     catch
                     {

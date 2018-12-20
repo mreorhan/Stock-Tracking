@@ -40,7 +40,7 @@
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(728, 451);
+            this.gridControl1.Size = new System.Drawing.Size(728, 479);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -48,16 +48,18 @@
             // 
             // gridView1
             // 
+            this.gridView1.DetailHeight = 372;
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
-            // ucCategories
+            // ucProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gridControl1);
-            this.Name = "ucCategories";
-            this.Size = new System.Drawing.Size(728, 451);
+            this.Name = "ucProduct";
+            this.Size = new System.Drawing.Size(728, 479);
+            this.Load += new System.EventHandler(this.ucProduct_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);

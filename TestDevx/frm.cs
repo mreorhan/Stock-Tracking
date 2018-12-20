@@ -15,6 +15,11 @@ namespace TestDevx
         public frm()
         {
             InitializeComponent();
+            /* WHY AM I USING SINGLETON WITH GENERIC METHOD: (stackoverflow)
+             * If a user can provide a type to as a generic type argument then
+             * they can also create instances of that type. In other words,
+             * you cannot create a generic singleton factory - it undermines the pattern itself.
+             */
         }
 
         private void fluentDesignFormContainer1_Click(object sender, EventArgs e)
@@ -75,6 +80,28 @@ namespace TestDevx
                 ucLoantoUser.Instance.BringToFront();
             }
             ucLoantoUser.Instance.BringToFront();
+        }
+
+        private void acUnused_Click(object sender, EventArgs e)
+        {
+            if (!container.Controls.Contains(ucUnusedProducts.Instance))
+            {
+                container.Controls.Add(ucUnusedProducts.Instance);
+                ucUnusedProducts.Instance.Dock = DockStyle.Fill;
+                ucUnusedProducts.Instance.BringToFront();
+            }
+            ucUnusedProducts.Instance.BringToFront();
+        }
+
+        private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!container.Controls.Contains(ucRemoveProduct.Instance))
+            {
+                container.Controls.Add(ucRemoveProduct.Instance);
+                ucRemoveProduct.Instance.Dock = DockStyle.Fill;
+                ucRemoveProduct.Instance.BringToFront();
+            }
+            ucRemoveProduct.Instance.BringToFront();
         }
     }
 }

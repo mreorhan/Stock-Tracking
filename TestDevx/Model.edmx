@@ -125,6 +125,9 @@
           <Parameter Name="purchasedPrice" Type="int" Mode="In" />
           <Parameter Name="pieces" Type="int" Mode="In" />
         </Function>
+        <Function Name="removeProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productID" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="STOK_TAKIPModelStoreContainer">
           <EntitySet Name="loanDetails" EntityType="Self.loanDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
@@ -188,6 +191,9 @@
             <Parameter Name="productID" Mode="In" Type="Int32" />
             <Parameter Name="loanDate" Mode="In" Type="DateTime" />
             <Parameter Name="loanPieces" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="removeProduct">
+          <Parameter Name="productID" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <EntityType Name="loanDetail">
@@ -367,6 +373,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="addLoan" FunctionName="STOK_TAKIPModel.Store.addLoan" />
+          <FunctionImportMapping FunctionImportName="removeProduct" FunctionName="STOK_TAKIPModel.Store.removeProduct" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

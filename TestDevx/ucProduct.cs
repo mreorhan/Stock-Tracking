@@ -21,6 +21,10 @@ namespace TestDevx
                     _instance = new ucProduct();
                 return _instance;
             }
+            set
+            {
+                _instance = value;
+            }
         }
         public ucProduct()
         {
@@ -46,6 +50,11 @@ namespace TestDevx
                 });
             gridControl1.DataSource = model2.ToList();
             }
+        }
+
+        private void ucProduct_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

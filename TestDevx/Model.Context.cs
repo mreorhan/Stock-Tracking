@@ -86,5 +86,14 @@ namespace TestDevx
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addLoan", userIDParameter, loanByIDParameter, productIDParameter, loanDateParameter, loanPiecesParameter);
         }
+    
+        public virtual int removeProduct(Nullable<int> productID)
+        {
+            var productIDParameter = productID.HasValue ?
+                new ObjectParameter("productID", productID) :
+                new ObjectParameter("productID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("removeProduct", productIDParameter);
+        }
     }
 }

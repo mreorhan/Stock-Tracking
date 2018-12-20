@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.container = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
@@ -59,13 +59,14 @@
             this.aceCategories = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceProducts = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acUserList = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.acUnused = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.acUnused = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
@@ -202,6 +203,7 @@
             this.barButtonItem4.Id = 10;
             this.barButtonItem4.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem4.ImageOptions.SvgImage")));
             this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem4_ItemClick);
             // 
             // btnProductEmbezzle
             // 
@@ -295,12 +297,21 @@
             this.acUserList.Text = "Users";
             this.acUserList.Click += new System.EventHandler(this.accordionControlElement4_Click);
             // 
+            // acUnused
+            // 
+            this.acUnused.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("acUnused.ImageOptions.Image")));
+            this.acUnused.Name = "acUnused";
+            this.acUnused.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.acUnused.Text = "Unused Products";
+            this.acUnused.Click += new System.EventHandler(this.acUnused_Click);
+            // 
             // fluentDesignFormControl1
             // 
             this.fluentDesignFormControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem5});
+            this.barButtonItem5,
+            this.barStaticItem1});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
             this.fluentDesignFormControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -308,6 +319,20 @@
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.barButtonItem5);
+            this.fluentDesignFormControl1.TitleItemLinks.Add(this.barStaticItem1);
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Fork from Github";
+            this.barButtonItem5.Id = 0;
+            this.barButtonItem5.Name = "barButtonItem5";
+            // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "@mrecoder";
+            this.barStaticItem1.Id = 0;
+            this.barStaticItem1.Name = "barStaticItem1";
+            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Far;
             // 
             // barButtonItem2
             // 
@@ -315,9 +340,9 @@
             this.barButtonItem2.Id = 3;
             this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
             this.barButtonItem2.Name = "barButtonItem2";
-            toolTipTitleItem5.Text = "asdasd";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            this.barButtonItem2.SuperTip = superToolTip5;
+            toolTipTitleItem1.Text = "asdasd";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.barButtonItem2.SuperTip = superToolTip1;
             // 
             // barButtonItem3
             // 
@@ -325,9 +350,9 @@
             this.barButtonItem3.Id = 3;
             this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
             this.barButtonItem3.Name = "barButtonItem3";
-            toolTipTitleItem6.Text = "asdasd";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.barButtonItem3.SuperTip = superToolTip6;
+            toolTipTitleItem2.Text = "asdasd";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barButtonItem3.SuperTip = superToolTip2;
             // 
             // accordionControlElement2
             // 
@@ -342,19 +367,6 @@
             this.accordionControlElement3.Name = "accordionControlElement3";
             this.accordionControlElement3.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement3.Text = "Element3";
-            // 
-            // acUnused
-            // 
-            this.acUnused.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("accordionControlElement4.ImageOptions.Image")));
-            this.acUnused.Name = "acUnused";
-            this.acUnused.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.acUnused.Text = "Unused Products";
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Fork from Github";
-            this.barButtonItem5.Id = 0;
-            this.barButtonItem5.Name = "barButtonItem5";
             // 
             // accordionControlElement4
             // 
@@ -423,5 +435,6 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement acUnused;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement4;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
     }
 }

@@ -56,6 +56,7 @@ namespace TestDevx
                     productName, productFeatures, purchasedDate, purchasedByID, purchasedPrice, pieces);
 
                     MessageBox.Show("The transaction was successful!");
+                    ucProduct.Instance = null;
                 }
                 catch {
                     MessageBox.Show("The transaction was failed!");
