@@ -8,6 +8,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+[Hh]tml/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -330,4 +331,3 @@ ASALocalRun/
 .mfractor/
 
 #Graphics
-.html/
