@@ -60,6 +60,7 @@ namespace TestDevx
                 ucAddProduct.Instance.BringToFront();
             }
             ucAddProduct.Instance.BringToFront();
+            ucAddProduct.Instance.userID =int.Parse(getUser[3]);
         }
 
         private void accordionControlElement4_Click(object sender, EventArgs e)
@@ -129,5 +130,17 @@ namespace TestDevx
             }
             ucAccount.Instance.BringToFront();
         }
+
+        private void btnEditProduct_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!container.Controls.Contains(ucEditProduct.Instance))
+            {
+                container.Controls.Add(ucEditProduct.Instance);
+                ucEditProduct.Instance.Dock = DockStyle.Fill;
+                ucEditProduct.Instance.BringToFront();
+            }
+            ucEditProduct.Instance.BringToFront();
+        }
+        
     }
 }

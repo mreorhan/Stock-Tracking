@@ -37,7 +37,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblAvailable = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.txtPiece.Properties)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbUser
@@ -87,16 +89,16 @@
             // 
             // btnAddLoan
             // 
-            this.btnAddLoan.Location = new System.Drawing.Point(746, 340);
+            this.btnAddLoan.Location = new System.Drawing.Point(805, 13);
             this.btnAddLoan.Name = "btnAddLoan";
-            this.btnAddLoan.Size = new System.Drawing.Size(164, 49);
+            this.btnAddLoan.Size = new System.Drawing.Size(185, 49);
             this.btnAddLoan.TabIndex = 5;
             this.btnAddLoan.Text = "Add Loan";
             this.btnAddLoan.Click += new System.EventHandler(this.btnAddLoan_Click);
             // 
             // txtPiece
             // 
-            this.txtPiece.EditValue = "0";
+            this.txtPiece.EditValue = "1";
             this.txtPiece.Location = new System.Drawing.Point(255, 247);
             this.txtPiece.Name = "txtPiece";
             this.txtPiece.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -104,7 +106,7 @@
             this.txtPiece.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtPiece.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.Optimistic;
             this.txtPiece.Properties.Mask.BeepOnError = true;
-            this.txtPiece.Properties.Mask.EditMask = "\\d+";
+            this.txtPiece.Properties.Mask.EditMask = "([1-9]?[1-9]|10000)";
             this.txtPiece.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtPiece.Properties.NullText = "0";
             this.txtPiece.Size = new System.Drawing.Size(120, 34);
@@ -142,15 +144,35 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "Available:";
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.5708F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.4292F));
+            this.tableLayoutPanel1.Controls.Add(this.btnAddLoan, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 443);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1003, 75);
+            this.tableLayoutPanel1.TabIndex = 22;
+            this.tableLayoutPanel1.Visible = false;
+            // 
             // ucLoantoUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblAvailable);
             this.Controls.Add(this.txtPiece);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnAddLoan);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbProducts);
             this.Controls.Add(this.label1);
@@ -159,6 +181,7 @@
             this.Size = new System.Drawing.Size(1003, 518);
             this.Load += new System.EventHandler(this.ucLoantoUser_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtPiece.Properties)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +198,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblAvailable;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

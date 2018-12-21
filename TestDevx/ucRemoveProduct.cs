@@ -55,6 +55,11 @@ namespace TestDevx
 
         private void btnRemoveProduct_Click(object sender, EventArgs e)
         {
+            if(cbProducts.SelectedIndex==-1)
+            {
+                MessageBox.Show("You must fill in the required fields!");
+                return;
+            }
             using (var context = new STOK_TAKIPEntities())
             {
                 product p = new product();
@@ -70,6 +75,7 @@ namespace TestDevx
                     //Refresh related instance
                     ucProduct.Instance = null;
                     ucLoantoUser.Instance = null;
+                    ucUnusedProducts.Instance = null;
                 }
                 catch (SqlException err)
                 {
@@ -87,6 +93,11 @@ namespace TestDevx
                     }
                 }
             }
+        }
+
+        private void cbProducts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnRemoveProduct.Visible = true;
         }
     }
 }

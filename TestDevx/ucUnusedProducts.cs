@@ -22,6 +22,10 @@ namespace TestDevx
                    _instance = new ucUnusedProducts();
                return _instance;
             }
+            set
+            {
+                _instance = value;
+            }
         }
         
         public ucUnusedProducts()

@@ -74,5 +74,11 @@ namespace TestDevx
 
             }
         }
+
+        private void formLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+
+        }
     }
 }

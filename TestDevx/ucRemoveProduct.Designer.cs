@@ -60,6 +60,7 @@
             this.cbProducts.Name = "cbProducts";
             this.cbProducts.Size = new System.Drawing.Size(470, 33);
             this.cbProducts.TabIndex = 5;
+            this.cbProducts.SelectedIndexChanged += new System.EventHandler(this.cbProducts_SelectedIndexChanged);
             // 
             // btnRemoveProduct
             // 
@@ -68,6 +69,7 @@
             this.btnRemoveProduct.Size = new System.Drawing.Size(168, 49);
             this.btnRemoveProduct.TabIndex = 7;
             this.btnRemoveProduct.Text = "Remove Product";
+            this.btnRemoveProduct.Visible = false;
             this.btnRemoveProduct.Click += new System.EventHandler(this.btnRemoveProduct_Click);
             // 
             // tableLayoutPanel1

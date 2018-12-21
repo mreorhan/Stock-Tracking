@@ -14,6 +14,7 @@ namespace TestDevx
 {
     public partial class ucAddProduct : DevExpress.XtraEditors.XtraUserControl
     {
+        public int userID;
         private static ucAddProduct _instance;
         public static ucAddProduct Instance
         {
@@ -31,7 +32,12 @@ namespace TestDevx
 
         private void btnAddPRoduct_Click(object sender, EventArgs e)
         {
-            int purchaseID = 6;
+            if(string.IsNullOrWhiteSpace(txtProductName.Text) || string.IsNullOrWhiteSpace(txtProductFeatures.Text) || string.IsNullOrWhiteSpace(txtPrice.Text)|| string.IsNullOrWhiteSpace(txtPiece.Text))
+            {
+                MessageBox.Show("You must fill in the required fields");
+                return;
+
+            }
            //TODO:KULLAN BUNU int addedBy = 1;
             product p = new product();
             purchase purc = new purchase();
@@ -39,7 +45,7 @@ namespace TestDevx
             p.productFeatures = txtProductFeatures.Text;
             purc.purchasedDate = datePurchasedDate.Text;
             p.pieces = int.Parse(txtPiece.Text);
-            purc.purchasedByID = purchaseID;
+            purc.purchasedByID = userID;
             purc.purchasePrice = int.Parse(txtPrice.Text);
             using (var context = new STOK_TAKIPEntities())
             {
@@ -58,6 +64,8 @@ namespace TestDevx
                     MessageBox.Show("The transaction was successful!");
                     ucProduct.Instance = null;
                     ucRemoveProduct.Instance = null;
+                    ucLoantoUser.Instance = null;
+                    ucEditProduct.Instance = null;
                 }
                 catch {
                     MessageBox.Show("The transaction was failed!");

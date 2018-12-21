@@ -50,7 +50,7 @@ namespace TestDevx
 
         private void ucLoantoUser_Load(object sender, EventArgs e)
         {
-            btnAddLoan.Visible = false;
+            tableLayoutPanel1.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,7 +61,11 @@ namespace TestDevx
 
         private void btnAddLoan_Click(object sender, EventArgs e)
         {
-            
+            if (txtPiece.Text == "" || cbUser.SelectedIndex==-1)
+            {
+                MessageBox.Show("You must fill in the required fields");
+                return;
+            }
             if (int.Parse(lblAvailable.Text) >= int.Parse(txtPiece.Text))
             {
                 // Zimmetleme işlemleri burada gerçekleştiriliyor
@@ -113,14 +117,14 @@ namespace TestDevx
                 txtPiece.Visible = false;
                 label5.Text = "";
                 lblAvailable.Text = "Not available";
-                btnAddLoan.Visible = false;
+                tableLayoutPanel1.Visible = false;
             }
             else
             {
                 txtPiece.Visible = true;
                 label5.Text = "Piece";
                 lblAvailable.Text = result.pieces.ToString();
-                btnAddLoan.Visible = true;
+                tableLayoutPanel1.Visible = true;
             }
 
 

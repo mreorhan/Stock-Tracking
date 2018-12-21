@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.repositoryItemPictureEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.repositoryItemPictureEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.repositoryItemImageEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.container = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
+            this.lblName = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
@@ -70,7 +71,7 @@
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.lblName = new System.Windows.Forms.Label();
+            this.btnEditProduct = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit2)).BeginInit();
@@ -114,6 +115,15 @@
             this.container.Size = new System.Drawing.Size(981, 760);
             this.container.TabIndex = 0;
             // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblName.Location = new System.Drawing.Point(80, 313);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(0, 23);
+            this.lblName.TabIndex = 3;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -140,9 +150,10 @@
             this.btnAddNewProduct,
             this.barButtonItem4,
             this.btnProductEmbezzle,
-            this.btnLogout});
+            this.btnLogout,
+            this.btnEditProduct});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 15;
+            this.ribbonControl1.MaxItemId = 16;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1});
@@ -258,6 +269,7 @@
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.btnAddNewProduct);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnEditProduct);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnProductEmbezzle);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem4);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
@@ -364,9 +376,9 @@
             this.barButtonItem2.Id = 3;
             this.barButtonItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem2.ImageOptions.SvgImage")));
             this.barButtonItem2.Name = "barButtonItem2";
-            toolTipTitleItem5.Text = "asdasd";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            this.barButtonItem2.SuperTip = superToolTip5;
+            toolTipTitleItem1.Text = "asdasd";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            this.barButtonItem2.SuperTip = superToolTip1;
             // 
             // barButtonItem3
             // 
@@ -374,9 +386,9 @@
             this.barButtonItem3.Id = 3;
             this.barButtonItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem3.ImageOptions.SvgImage")));
             this.barButtonItem3.Name = "barButtonItem3";
-            toolTipTitleItem6.Text = "asdasd";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            this.barButtonItem3.SuperTip = superToolTip6;
+            toolTipTitleItem2.Text = "asdasd";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            this.barButtonItem3.SuperTip = superToolTip2;
             // 
             // accordionControlElement2
             // 
@@ -398,14 +410,13 @@
             this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement4.Text = "Element4";
             // 
-            // lblName
+            // btnEditProduct
             // 
-            this.lblName.AutoSize = true;
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lblName.Location = new System.Drawing.Point(80, 313);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(0, 23);
-            this.lblName.TabIndex = 3;
+            this.btnEditProduct.Caption = "Edit  Product";
+            this.btnEditProduct.Id = 15;
+            this.btnEditProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEditProduct.ImageOptions.SvgImage")));
+            this.btnEditProduct.Name = "btnEditProduct";
+            this.btnEditProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEditProduct_ItemClick);
             // 
             // frm
             // 
@@ -475,5 +486,6 @@
         private DevExpress.XtraBars.BarButtonItem btnLogout;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;
+        private DevExpress.XtraBars.BarButtonItem btnEditProduct;
     }
 }

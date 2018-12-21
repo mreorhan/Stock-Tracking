@@ -46,12 +46,14 @@ namespace TestDevx
                         join u in db.users on l.userID equals u.id
                         select new
                         {
-                           p.productName,
-                           p.pieces,
-                          Who= u.name+" "+u.lastName,
-                          l.loanDate,
-                         How_Many= l.loanPieces
+                            p.productName,
+                            p.productFeatures,
+                            Who = u.name + " " + u.lastName,
+                            l.loanDate,
+                            byd = u.username,
+                            How_Many = l.loanPieces
                         };
+
             gridControl1.DataSource = model.ToList();
         }
     }

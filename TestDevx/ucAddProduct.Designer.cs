@@ -41,6 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPiece = new DevExpress.XtraEditors.TextEdit();
             this.label5 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtProductFeatures.Properties)).BeginInit();
@@ -48,6 +49,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.datePurchasedDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPiece.Properties)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -57,9 +59,9 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label1.Location = new System.Drawing.Point(90, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 23);
+            this.label1.Size = new System.Drawing.Size(125, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Ürün Adı:";
+            this.label1.Text = "Product Name:";
             // 
             // txtProductName
             // 
@@ -94,15 +96,15 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.Location = new System.Drawing.Point(436, 100);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 23);
+            this.label2.Size = new System.Drawing.Size(144, 23);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Ürün Özellikleri:";
+            this.label2.Text = "Product Features:";
             // 
             // btnAddPRoduct
             // 
-            this.btnAddPRoduct.Location = new System.Drawing.Point(746, 343);
+            this.btnAddPRoduct.Location = new System.Drawing.Point(742, 13);
             this.btnAddPRoduct.Name = "btnAddPRoduct";
-            this.btnAddPRoduct.Size = new System.Drawing.Size(164, 49);
+            this.btnAddPRoduct.Size = new System.Drawing.Size(170, 49);
             this.btnAddPRoduct.TabIndex = 4;
             this.btnAddPRoduct.Text = "Add Product";
             this.btnAddPRoduct.Click += new System.EventHandler(this.btnAddPRoduct_Click);
@@ -133,9 +135,9 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label3.Location = new System.Drawing.Point(90, 215);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 23);
+            this.label3.Size = new System.Drawing.Size(134, 23);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Satın Alma Tarihi:";
+            this.label3.Text = "Purchased Date:";
             // 
             // txtPrice
             // 
@@ -159,9 +161,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label4.Location = new System.Drawing.Point(436, 218);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(98, 23);
+            this.label4.Size = new System.Drawing.Size(51, 23);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Ürün Fiyatı:";
+            this.label4.Text = "Price:";
             // 
             // txtPiece
             // 
@@ -185,21 +187,40 @@
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.Location = new System.Drawing.Point(786, 218);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 23);
+            this.label5.Size = new System.Drawing.Size(61, 23);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Ürün Adedi:";
+            this.label5.Text = "Pieces:";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.5708F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.4292F));
+            this.tableLayoutPanel1.Controls.Add(this.btnAddPRoduct, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 411);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(10);
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(926, 75);
+            this.tableLayoutPanel1.TabIndex = 22;
             // 
             // ucAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.txtPiece);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.datePurchasedDate);
-            this.Controls.Add(this.btnAddPRoduct);
             this.Controls.Add(this.txtProductFeatures);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtProductName);
@@ -213,6 +234,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.datePurchasedDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPiece.Properties)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,5 +254,6 @@
         private System.Windows.Forms.Label label4;
         private DevExpress.XtraEditors.TextEdit txtPiece;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

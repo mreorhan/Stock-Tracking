@@ -36,20 +36,23 @@ namespace TestDevx
 
         private void gridControl1_Load(object sender, EventArgs e)
         {
-            using (STOK_TAKIPEntities db = new STOK_TAKIPEntities()) { 
-                var model2 = db.products.Select(m => new
-                {
-                    m.productName,
-                    m.productFeatures,
-                    m.purchase.purchasedDate,
-                    m.purchase.purchasePrice,
-                    m.purchase.purchasedByID,
-                    m.pieces,
-                    m.isAvailable,
-                    In_Stock = m.purchase.isDeleted == false ? "Yes" : "No"
-
-                }).Where(k=>k.isAvailable==1);
-            gridControl1.DataSource = model2.ToList();
+            using (STOK_TAKIPEntities db = new STOK_TAKIPEntities()) {
+                var model = from m in db.products
+                            join purc in db.purchases on m.purchaseID equals purc.purchaseID
+                            join u in db.users on purc.purchasedByID equals u.id
+                            where m.isAvailable == 1
+                            select new
+                            {
+                                m.productName,
+                                m.productFeatures,
+                                m.purchase.purchasedDate,
+                                m.purchase.purchasePrice,
+                                Purchased_By = u.name + " " + u.lastName,
+                                Number = m.pieces,
+                                In_Stock = m.purchase.isDeleted == false ? "Yes" : "No"
+                            };
+               
+                gridControl1.DataSource = model.ToList();
             }
         }
 
