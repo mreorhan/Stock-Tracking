@@ -141,6 +141,27 @@ namespace TestDevx
             }
             ucEditProduct.Instance.BringToFront();
         }
-        
+
+        private void btnAddUser_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!container.Controls.Contains(ucAddUser.Instance))
+            {
+                container.Controls.Add(ucAddUser.Instance);
+                ucAddUser.Instance.Dock = DockStyle.Fill;
+                ucAddUser.Instance.BringToFront();
+            }
+            ucAddUser.Instance.BringToFront();
+        }
+
+        private void btnProductCancel_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!container.Controls.Contains(ucUndoProduct.Instance))
+            {
+                container.Controls.Add(ucUndoProduct.Instance);
+                ucUndoProduct.Instance.Dock = DockStyle.Fill;
+                ucUndoProduct.Instance.BringToFront();
+            }
+            ucUndoProduct.Instance.BringToFront();
+        }
     }
 }

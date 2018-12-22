@@ -82,6 +82,12 @@
     <Compile Include="frm.Designer.cs">
       <DependentUpon>frm.cs</DependentUpon>
     </Compile>
+    <Compile Include="getLoanbyUserID2_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="getLoanbyUserID_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="list_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -127,6 +133,12 @@
     <Compile Include="ucAddProduct.Designer.cs">
       <DependentUpon>ucAddProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucAddUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucAddUser.Designer.cs">
+      <DependentUpon>ucAddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucEditProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -156,6 +168,12 @@
     </Compile>
     <Compile Include="ucRemoveProduct.Designer.cs">
       <DependentUpon>ucRemoveProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucUndoProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucUndoProduct.Designer.cs">
+      <DependentUpon>ucUndoProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="ucUnusedProducts.cs">
       <SubType>UserControl</SubType>
@@ -197,6 +215,9 @@
     <EmbeddedResource Include="ucAddProduct.resx">
       <DependentUpon>ucAddProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ucAddUser.resx">
+      <DependentUpon>ucAddUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ucEditProduct.resx">
       <DependentUpon>ucEditProduct.cs</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucRemoveProduct.resx">
       <DependentUpon>ucRemoveProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucUndoProduct.resx">
+      <DependentUpon>ucUndoProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucUnusedProducts.resx">
       <DependentUpon>ucUnusedProducts.cs</DependentUpon>

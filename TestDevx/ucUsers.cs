@@ -22,6 +22,10 @@ namespace TestDevx
                     _instance = new ucUsers();
                 return _instance;
             }
+            set
+            {
+                _instance = value;
+            }
         }
         public ucUsers()
         {

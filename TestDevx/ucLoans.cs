@@ -39,6 +39,7 @@ namespace TestDevx
 
         private void ucLoans_Load(object sender, EventArgs e)
         {
+            ucLoantoUser.Instance = null;
             //zimmetlenen ürünleri görüntülüyoruz
             STOK_TAKIPEntities db = new STOK_TAKIPEntities();
             var model = from l in db.loanDetails

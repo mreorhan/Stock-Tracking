@@ -95,6 +95,9 @@ namespace TestDevx
                         MessageBox.Show("The transaction was successful!");
                         txtPiece.Text = "";
                         ucLoans.Instance = null;
+                        ucRemoveProduct.Instance = null;
+                        cbUser.SelectedIndex = -1;
+                        cbProducts.SelectedIndex = -1;
                     }
                     catch
                     {

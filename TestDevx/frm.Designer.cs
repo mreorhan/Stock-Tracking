@@ -52,6 +52,9 @@
             this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             this.btnProductEmbezzle = new DevExpress.XtraBars.BarButtonItem();
             this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEditProduct = new DevExpress.XtraBars.BarButtonItem();
+            this.btnAddUser = new DevExpress.XtraBars.BarButtonItem();
+            this.btnProductCancel = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.user = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -62,6 +65,7 @@
             this.aceCategories = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.aceProducts = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.acUserList = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.accordionControlSeparator1 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
             this.acUnused = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
@@ -71,7 +75,6 @@
             this.accordionControlElement2 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement3 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.btnEditProduct = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit2)).BeginInit();
@@ -151,9 +154,11 @@
             this.barButtonItem4,
             this.btnProductEmbezzle,
             this.btnLogout,
-            this.btnEditProduct});
+            this.btnEditProduct,
+            this.btnAddUser,
+            this.btnProductCancel});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 16;
+            this.ribbonControl1.MaxItemId = 18;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1});
@@ -244,6 +249,30 @@
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLogout_ItemClick_1);
             // 
+            // btnEditProduct
+            // 
+            this.btnEditProduct.Caption = "Edit  Product";
+            this.btnEditProduct.Id = 15;
+            this.btnEditProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEditProduct.ImageOptions.SvgImage")));
+            this.btnEditProduct.Name = "btnEditProduct";
+            this.btnEditProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEditProduct_ItemClick);
+            // 
+            // btnAddUser
+            // 
+            this.btnAddUser.Caption = "Add New User";
+            this.btnAddUser.Id = 16;
+            this.btnAddUser.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAddUser.ImageOptions.SvgImage")));
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnAddUser_ItemClick);
+            // 
+            // btnProductCancel
+            // 
+            this.btnProductCancel.Caption = "Product Cancellation";
+            this.btnProductCancel.Id = 17;
+            this.btnProductCancel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnProductCancel.ImageOptions.SvgImage")));
+            this.btnProductCancel.Name = "btnProductCancel";
+            this.btnProductCancel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductCancel_ItemClick);
+            // 
             // ribbonPageCategory1
             // 
             this.ribbonPageCategory1.Name = "ribbonPageCategory1";
@@ -262,6 +291,7 @@
             // 
             this.user.ItemLinks.Add(this.barButtonGroup1, true);
             this.user.ItemLinks.Add(this.barButtonItem1);
+            this.user.ItemLinks.Add(this.btnAddUser);
             this.user.Name = "user";
             this.user.ShowCaptionButton = false;
             this.user.Text = "User Settings";
@@ -271,6 +301,7 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnAddNewProduct);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnEditProduct);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnProductEmbezzle);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnProductCancel);
             this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem4);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.ShowCaptionButton = false;
@@ -302,6 +333,7 @@
             this.aceCategories,
             this.aceProducts,
             this.acUserList,
+            this.accordionControlSeparator1,
             this.acUnused});
             this.accordionControlElement1.Expanded = true;
             this.accordionControlElement1.Name = "accordionControlElement1";
@@ -332,6 +364,10 @@
             this.acUserList.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.acUserList.Text = "Users";
             this.acUserList.Click += new System.EventHandler(this.accordionControlElement4_Click);
+            // 
+            // accordionControlSeparator1
+            // 
+            this.accordionControlSeparator1.Name = "accordionControlSeparator1";
             // 
             // acUnused
             // 
@@ -410,14 +446,6 @@
             this.accordionControlElement4.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.accordionControlElement4.Text = "Element4";
             // 
-            // btnEditProduct
-            // 
-            this.btnEditProduct.Caption = "Edit  Product";
-            this.btnEditProduct.Id = 15;
-            this.btnEditProduct.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEditProduct.ImageOptions.SvgImage")));
-            this.btnEditProduct.Name = "btnEditProduct";
-            this.btnEditProduct.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEditProduct_ItemClick);
-            // 
             // frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -487,5 +515,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblName;
         private DevExpress.XtraBars.BarButtonItem btnEditProduct;
+        private DevExpress.XtraBars.BarButtonItem btnAddUser;
+        private DevExpress.XtraBars.BarButtonItem btnProductCancel;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
     }
 }

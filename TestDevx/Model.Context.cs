@@ -117,5 +117,69 @@ namespace TestDevx
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<list_Result>("list", productIDParameter);
         }
+    
+        public virtual int addUser(string name, string lastName, string username, string password, Nullable<int> userType)
+        {
+            var nameParameter = name != null ?
+                new ObjectParameter("name", name) :
+                new ObjectParameter("name", typeof(string));
+    
+            var lastNameParameter = lastName != null ?
+                new ObjectParameter("lastName", lastName) :
+                new ObjectParameter("lastName", typeof(string));
+    
+            var usernameParameter = username != null ?
+                new ObjectParameter("username", username) :
+                new ObjectParameter("username", typeof(string));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            var userTypeParameter = userType.HasValue ?
+                new ObjectParameter("userType", userType) :
+                new ObjectParameter("userType", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("addUser", nameParameter, lastNameParameter, usernameParameter, passwordParameter, userTypeParameter);
+        }
+    
+        public virtual int editProduct(Nullable<int> productID, string productName, string productFeatures, Nullable<int> productPiece)
+        {
+            var productIDParameter = productID.HasValue ?
+                new ObjectParameter("productID", productID) :
+                new ObjectParameter("productID", typeof(int));
+    
+            var productNameParameter = productName != null ?
+                new ObjectParameter("productName", productName) :
+                new ObjectParameter("productName", typeof(string));
+    
+            var productFeaturesParameter = productFeatures != null ?
+                new ObjectParameter("productFeatures", productFeatures) :
+                new ObjectParameter("productFeatures", typeof(string));
+    
+            var productPieceParameter = productPiece.HasValue ?
+                new ObjectParameter("productPiece", productPiece) :
+                new ObjectParameter("productPiece", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("editProduct", productIDParameter, productNameParameter, productFeaturesParameter, productPieceParameter);
+        }
+    
+        public virtual ObjectResult<getLoanbyUserID_Result> getLoanbyUserID(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getLoanbyUserID_Result>("getLoanbyUserID", userIDParameter);
+        }
+    
+        public virtual ObjectResult<getLoanbyUserID2_Result> getLoanbyUserID2(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getLoanbyUserID2_Result>("getLoanbyUserID2", userIDParameter);
+        }
     }
 }

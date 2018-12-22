@@ -42,10 +42,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" />
-          <Property Name="lastName" Type="nvarchar" MaxLength="50" />
-          <Property Name="username" Type="nvarchar" MaxLength="50" />
-          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="250" />
+          <Property Name="username" Type="nvarchar" MaxLength="250" />
+          <Property Name="password" Type="nvarchar" MaxLength="250" />
           <Property Name="lastLogin" Type="smalldatetime" />
           <Property Name="userTypeID" Type="int" />
         </EntityType>
@@ -117,6 +117,13 @@
           <Parameter Name="loanDate" Type="smalldatetime" Mode="In" />
           <Parameter Name="loanPieces" Type="int" Mode="In" />
         </Function>
+        <Function Name="addUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="nvarchar" Mode="In" />
+          <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+          <Parameter Name="userType" Type="int" Mode="In" />
+        </Function>
         <Function Name="createNewProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productName" Type="nvarchar" Mode="In" />
           <Parameter Name="productFeatures" Type="nvarchar" Mode="In" />
@@ -124,6 +131,18 @@
           <Parameter Name="purchasedByID" Type="int" Mode="In" />
           <Parameter Name="purchasedPrice" Type="int" Mode="In" />
           <Parameter Name="pieces" Type="int" Mode="In" />
+        </Function>
+        <Function Name="editProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productID" Type="int" Mode="In" />
+          <Parameter Name="productName" Type="nvarchar" Mode="In" />
+          <Parameter Name="productFeatures" Type="nvarchar" Mode="In" />
+          <Parameter Name="productPiece" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getLoanbyUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getLoanbyUserID2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
         </Function>
         <Function Name="list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="int" Mode="In" />
@@ -171,6 +190,39 @@
             <Parameter Name="purchasedPrice" Mode="In" Type="Int32" />
             <Parameter Name="pieces" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="addLoan">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="loanByID" Mode="In" Type="Int32" />
+            <Parameter Name="productID" Mode="In" Type="Int32" />
+            <Parameter Name="loanDate" Mode="In" Type="DateTime" />
+            <Parameter Name="loanPieces" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="removeProduct">
+          <Parameter Name="productID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="loginCheck" ReturnType="Collection(STOK_TAKIPModel.loginCheck_Result)">
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="list" ReturnType="Collection(STOK_TAKIPModel.list_Result)">
+          <Parameter Name="productID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="addUser">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="lastName" Mode="In" Type="String" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="userType" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="editProduct">
+            <Parameter Name="productID" Mode="In" Type="Int32" />
+            <Parameter Name="productName" Mode="In" Type="String" />
+            <Parameter Name="productFeatures" Mode="In" Type="String" />
+            <Parameter Name="productPiece" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getLoanbyUserID" ReturnType="Collection(STOK_TAKIPModel.getLoanbyUserID_Result)">
+          <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="loanDetails" EntityType="STOK_TAKIPModel.loanDetail" />
           <EntitySet Name="products" EntityType="STOK_TAKIPModel.product" />
           <EntitySet Name="purchases" EntityType="STOK_TAKIPModel.purchase" />
@@ -192,24 +244,29 @@
             <End Role="userType" EntitySet="userTypes" />
             <End Role="user" EntitySet="users" />
           </AssociationSet>
-          <FunctionImport Name="addLoan">
+          <FunctionImport Name="getLoanbyUserID2" ReturnType="Collection(STOK_TAKIPModel.getLoanbyUserID2_Result)">
             <Parameter Name="userID" Mode="In" Type="Int32" />
-            <Parameter Name="loanByID" Mode="In" Type="Int32" />
-            <Parameter Name="productID" Mode="In" Type="Int32" />
-            <Parameter Name="loanDate" Mode="In" Type="DateTime" />
-            <Parameter Name="loanPieces" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="removeProduct">
-          <Parameter Name="productID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="loginCheck" ReturnType="Collection(STOK_TAKIPModel.loginCheck_Result)">
-            <Parameter Name="username" Mode="In" Type="String" />
-            <Parameter Name="password" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="list" ReturnType="Collection(STOK_TAKIPModel.list_Result)">
-          <Parameter Name="productID" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
+        <ComplexType Name="loginCheck_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="password" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="lastLogin" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="userTypeID" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="list_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="101" />
+          <Property Type="String" Name="Product_Name" Nullable="true" MaxLength="255" />
+          <Property Type="DateTime" Name="Registered_Date" Nullable="true" Precision="16" />
+          <Property Type="Int32" Name="How_Many_" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getLoanbyUserID_Result">
+          <Property Type="String" Name="productName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+        </ComplexType>
         <EntityType Name="loanDetail">
           <Key>
             <PropertyRef Name="loanID" />
@@ -252,10 +309,10 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="lastName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="lastLogin" Type="DateTime" Precision="0" />
           <Property Name="userTypeID" Type="Int32" />
           <NavigationProperty Name="loanDetails" Relationship="STOK_TAKIPModel.FK_loanDetails_users" FromRole="user" ToRole="loanDetail" />
@@ -323,20 +380,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="loginCheck_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="lastName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="username" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="password" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="lastLogin" Nullable="true" Precision="16" />
-          <Property Type="Int32" Name="userTypeID" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="list_Result">
-          <Property Type="String" Name="Name" Nullable="true" MaxLength="101" />
-          <Property Type="String" Name="Product_Name" Nullable="true" MaxLength="255" />
-          <Property Type="DateTime" Name="Registered_Date" Nullable="true" Precision="16" />
-          <Property Type="Int32" Name="How_Many_" Nullable="true" />
+        <ComplexType Name="getLoanbyUserID2_Result">
+          <Property Type="String" Name="productName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Pieces" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -345,6 +391,41 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="STOK_TAKIPModelStoreContainer" CdmEntityContainer="STOK_TAKIPEntities">
           <FunctionImportMapping FunctionImportName="createNewProduct" FunctionName="STOK_TAKIPModel.Store.createNewProduct" />
+          <FunctionImportMapping FunctionImportName="addLoan" FunctionName="STOK_TAKIPModel.Store.addLoan" />
+          <FunctionImportMapping FunctionImportName="removeProduct" FunctionName="STOK_TAKIPModel.Store.removeProduct" />
+          <FunctionImportMapping FunctionImportName="loginCheck" FunctionName="STOK_TAKIPModel.Store.loginCheck">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="STOK_TAKIPModel.loginCheck_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
+                <ScalarProperty Name="userTypeID" ColumnName="userTypeID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="list" FunctionName="STOK_TAKIPModel.Store.list">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="STOK_TAKIPModel.list_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
+                <ScalarProperty Name="Registered_Date" ColumnName="Registered Date" />
+                <ScalarProperty Name="How_Many_" ColumnName="How Many?" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="addUser" FunctionName="STOK_TAKIPModel.Store.addUser" />
+          <FunctionImportMapping FunctionImportName="editProduct" FunctionName="STOK_TAKIPModel.Store.editProduct" />
+          <FunctionImportMapping FunctionImportName="getLoanbyUserID" FunctionName="STOK_TAKIPModel.Store.getLoanbyUserID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="STOK_TAKIPModel.getLoanbyUserID_Result">
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="loanDetails">
             <EntityTypeMapping TypeName="STOK_TAKIPModel.loanDetail">
               <MappingFragment StoreEntitySet="loanDetails">
@@ -401,28 +482,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="addLoan" FunctionName="STOK_TAKIPModel.Store.addLoan" />
-          <FunctionImportMapping FunctionImportName="removeProduct" FunctionName="STOK_TAKIPModel.Store.removeProduct" />
-          <FunctionImportMapping FunctionImportName="loginCheck" FunctionName="STOK_TAKIPModel.Store.loginCheck">
+          <FunctionImportMapping FunctionImportName="getLoanbyUserID2" FunctionName="STOK_TAKIPModel.Store.getLoanbyUserID2">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="STOK_TAKIPModel.loginCheck_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="lastName" ColumnName="lastName" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="lastLogin" ColumnName="lastLogin" />
-                <ScalarProperty Name="userTypeID" ColumnName="userTypeID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="list" FunctionName="STOK_TAKIPModel.Store.list">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="STOK_TAKIPModel.list_Result">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Product_Name" ColumnName="Product Name" />
-                <ScalarProperty Name="Registered_Date" ColumnName="Registered Date" />
-                <ScalarProperty Name="How_Many_" ColumnName="How Many?" />
+              <ComplexTypeMapping TypeName="STOK_TAKIPModel.getLoanbyUserID2_Result">
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
