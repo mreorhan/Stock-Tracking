@@ -40,18 +40,18 @@ namespace TestDevx
         private void ucLoans_Load(object sender, EventArgs e)
         {
             ucLoantoUser.Instance = null;
-            //zimmetlenen ürünleri görüntülüyoruz
+            //We can see registered products in here
             STOK_TAKIPEntities db = new STOK_TAKIPEntities();
             var model = from l in db.loanDetails
                         join p in db.products on l.productID equals p.productID
                         join u in db.users on l.userID equals u.id
+                        where(l.loanPieces>=1)
                         select new
                         {
                             p.productName,
                             p.productFeatures,
                             Who = u.name + " " + u.lastName,
                             l.loanDate,
-                            byd = u.username,
                             How_Many = l.loanPieces
                         };
 

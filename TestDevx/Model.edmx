@@ -144,6 +144,9 @@
         <Function Name="getLoanbyUserID2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userID" Type="int" Mode="In" />
         </Function>
+        <Function Name="getLoanbyUserID3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+        </Function>
         <Function Name="list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="int" Mode="In" />
         </Function>
@@ -153,6 +156,11 @@
         </Function>
         <Function Name="removeProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="undoProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+          <Parameter Name="productID" Type="int" Mode="In" />
+          <Parameter Name="piece" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="STOK_TAKIPModelStoreContainer">
           <EntitySet Name="loanDetails" EntityType="Self.loanDetails" Schema="dbo" store:Type="Tables" />
@@ -245,6 +253,14 @@
             <End Role="user" EntitySet="users" />
           </AssociationSet>
           <FunctionImport Name="getLoanbyUserID2" ReturnType="Collection(STOK_TAKIPModel.getLoanbyUserID2_Result)">
+          <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="undoProduct">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="productID" Mode="In" Type="Int32" />
+            <Parameter Name="piece" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getLoanbyUserID3" ReturnType="Collection(STOK_TAKIPModel.getLoanbyUserID3_Result)">
             <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
@@ -384,6 +400,11 @@
           <Property Type="String" Name="productName" Nullable="true" MaxLength="255" />
           <Property Type="Int32" Name="Pieces" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="getLoanbyUserID3_Result">
+          <Property Type="String" Name="productName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Pieces" Nullable="true" />
+          <Property Type="Int32" Name="productID" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -487,6 +508,16 @@
               <ComplexTypeMapping TypeName="STOK_TAKIPModel.getLoanbyUserID2_Result">
                 <ScalarProperty Name="productName" ColumnName="productName" />
                 <ScalarProperty Name="Pieces" ColumnName="Pieces" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="undoProduct" FunctionName="STOK_TAKIPModel.Store.undoProduct" />
+          <FunctionImportMapping FunctionImportName="getLoanbyUserID3" FunctionName="STOK_TAKIPModel.Store.getLoanbyUserID3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="STOK_TAKIPModel.getLoanbyUserID3_Result">
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

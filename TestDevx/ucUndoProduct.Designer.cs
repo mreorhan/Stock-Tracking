@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnRemoveLoan = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUndoLoan = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtPiece.Properties)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -143,7 +143,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.5708F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 19.4292F));
-            this.tableLayoutPanel1.Controls.Add(this.btnRemoveLoan, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnUndoLoan, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 427);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -155,14 +155,14 @@
             this.tableLayoutPanel1.TabIndex = 23;
             this.tableLayoutPanel1.Visible = false;
             // 
-            // btnRemoveLoan
+            // btnUndoLoan
             // 
-            this.btnRemoveLoan.Location = new System.Drawing.Point(777, 13);
-            this.btnRemoveLoan.Name = "btnRemoveLoan";
-            this.btnRemoveLoan.Size = new System.Drawing.Size(179, 49);
-            this.btnRemoveLoan.TabIndex = 5;
-            this.btnRemoveLoan.Text = "Undo Loan";
-            this.btnRemoveLoan.Click += new System.EventHandler(this.btnRemoveLoan_Click);
+            this.btnUndoLoan.Location = new System.Drawing.Point(777, 13);
+            this.btnUndoLoan.Name = "btnUndoLoan";
+            this.btnUndoLoan.Size = new System.Drawing.Size(179, 49);
+            this.btnUndoLoan.TabIndex = 5;
+            this.btnUndoLoan.Text = "Undo Loan";
+            this.btnUndoLoan.Click += new System.EventHandler(this.btnUndoLoan_Click);
             // 
             // ucUndoProduct
             // 
@@ -198,6 +198,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbUser;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DevExpress.XtraEditors.SimpleButton btnRemoveLoan;
+        private DevExpress.XtraEditors.SimpleButton btnUndoLoan;
     }
 }

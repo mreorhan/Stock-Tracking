@@ -181,5 +181,31 @@ namespace TestDevx
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getLoanbyUserID2_Result>("getLoanbyUserID2", userIDParameter);
         }
+    
+        public virtual int undoProduct(Nullable<int> userID, Nullable<int> productID, Nullable<int> piece)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(int));
+    
+            var productIDParameter = productID.HasValue ?
+                new ObjectParameter("productID", productID) :
+                new ObjectParameter("productID", typeof(int));
+    
+            var pieceParameter = piece.HasValue ?
+                new ObjectParameter("piece", piece) :
+                new ObjectParameter("piece", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("undoProduct", userIDParameter, productIDParameter, pieceParameter);
+        }
+    
+        public virtual ObjectResult<getLoanbyUserID3_Result> getLoanbyUserID3(Nullable<int> userID)
+        {
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("userID", userID) :
+                new ObjectParameter("userID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getLoanbyUserID3_Result>("getLoanbyUserID3", userIDParameter);
+        }
     }
 }

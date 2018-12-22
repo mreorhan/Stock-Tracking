@@ -85,6 +85,9 @@
     <Compile Include="getLoanbyUserID2_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="getLoanbyUserID3_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="getLoanbyUserID_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

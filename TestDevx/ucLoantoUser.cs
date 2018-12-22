@@ -82,6 +82,7 @@ namespace TestDevx
 
                 using (var context = new STOK_TAKIPEntities())
                 {
+                    //get sql parameters for addLoan procedure
                     var userID = new SqlParameter("@userID", l.userID);
                     var loanByID = new SqlParameter("@loanByID", l.loanByID);
                     var productID = new SqlParameter("@productID", l.productID);
@@ -90,12 +91,14 @@ namespace TestDevx
 
                     try
                     {
+                        //execute addLoan stored procedure
                         context.Database.ExecuteSqlCommand("exec addLoan @userID , @loanByID , @productID , @loanDate, @loanPieces",
                         userID, loanByID, productID, loanDate, pieces);
                         MessageBox.Show("The transaction was successful!");
                         txtPiece.Text = "";
                         ucLoans.Instance = null;
                         ucRemoveProduct.Instance = null;
+                        ucUndoProduct.Instance = null;
                         cbUser.SelectedIndex = -1;
                         cbProducts.SelectedIndex = -1;
                     }

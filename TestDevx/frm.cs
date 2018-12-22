@@ -117,6 +117,24 @@ namespace TestDevx
 
         private void frm_Load(object sender, EventArgs e)
         {
+            if (getUser[4].ToString() == "2")
+            {
+                btnAddUser.Links[0].Visible = false;
+            }
+            else if(getUser[4].ToString() == "3")
+            {
+                accordionControl1.Visible = false;
+                btnAddUser.Links[0].Visible = false;
+
+                ribbonPageGroup1.Visible = false;
+                if (!container.Controls.Contains(ucLoans.Instance))
+                {
+                    container.Controls.Add(ucLoans.Instance);
+                    ucLoans.Instance.Dock = DockStyle.Fill;
+                    ucLoans.Instance.BringToFront();
+                }
+                ucLoans.Instance.BringToFront();
+            }
             lblName.Text = getUser[1].ToString() + " " + getUser[2].ToString() + "(" + getUser[0].ToString() + ")";
         }
 
