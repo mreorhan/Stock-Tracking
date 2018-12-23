@@ -35,12 +35,14 @@ namespace TestDevx
 
         private void btnAddPRoduct_Click(object sender, EventArgs e)
         {
+            
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string name = txtName.Text;
             string lastname = txtLastName.Text;
             int userRole = cbUserRole.SelectedIndex+1;
 
+            if(username!="" && password!="" && name!="" && lastname!="" && cbUserRole.SelectedIndex != -1) { 
 
             using (var context = new STOK_TAKIPEntities())
             {
@@ -62,10 +64,15 @@ namespace TestDevx
                 }
                 catch
                 {
-                    MessageBox.Show("Username or password wrong!");
+                    MessageBox.Show("Something went wrong!");
+                }
+
                 }
 
             }
+            else
+                MessageBox.Show("You must fill in the required fields");
+
         }
 
         private void ucAddUser_Load(object sender, EventArgs e)

@@ -13,7 +13,7 @@
           <Property Name="userID" Type="int" />
           <Property Name="loanByID" Type="int" />
           <Property Name="productID" Type="int" />
-          <Property Name="loanDate" Type="smalldatetime" />
+          <Property Name="loanDate" Type="nvarchar" MaxLength="250" />
           <Property Name="loanPieces" Type="int" />
         </EntityType>
         <EntityType Name="products">
@@ -114,7 +114,7 @@
           <Parameter Name="userID" Type="int" Mode="In" />
           <Parameter Name="loanByID" Type="int" Mode="In" />
           <Parameter Name="productID" Type="int" Mode="In" />
-          <Parameter Name="loanDate" Type="smalldatetime" Mode="In" />
+          <Parameter Name="loanDate" Type="nvarchar" Mode="In" />
           <Parameter Name="loanPieces" Type="int" Mode="In" />
         </Function>
         <Function Name="addUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -156,6 +156,12 @@
         </Function>
         <Function Name="removeProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="productID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
         </Function>
         <Function Name="undoProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userID" Type="int" Mode="In" />
@@ -202,7 +208,7 @@
             <Parameter Name="userID" Mode="In" Type="Int32" />
             <Parameter Name="loanByID" Mode="In" Type="Int32" />
             <Parameter Name="productID" Mode="In" Type="Int32" />
-            <Parameter Name="loanDate" Mode="In" Type="DateTime" />
+            <Parameter Name="loanDate" Mode="In" Type="String" />
             <Parameter Name="loanPieces" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="removeProduct">
@@ -231,6 +237,17 @@
           <FunctionImport Name="getLoanbyUserID" ReturnType="Collection(STOK_TAKIPModel.getLoanbyUserID_Result)">
           <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="getLoanbyUserID2" ReturnType="Collection(STOK_TAKIPModel.getLoanbyUserID2_Result)">
+          <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="undoProduct">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="productID" Mode="In" Type="Int32" />
+            <Parameter Name="piece" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getLoanbyUserID3" ReturnType="Collection(STOK_TAKIPModel.getLoanbyUserID3_Result)">
+          <Parameter Name="userID" Mode="In" Type="Int32" />
+          </FunctionImport>
           <EntitySet Name="loanDetails" EntityType="STOK_TAKIPModel.loanDetail" />
           <EntitySet Name="products" EntityType="STOK_TAKIPModel.product" />
           <EntitySet Name="purchases" EntityType="STOK_TAKIPModel.purchase" />
@@ -252,16 +269,11 @@
             <End Role="userType" EntitySet="userTypes" />
             <End Role="user" EntitySet="users" />
           </AssociationSet>
-          <FunctionImport Name="getLoanbyUserID2" ReturnType="Collection(STOK_TAKIPModel.getLoanbyUserID2_Result)">
-          <Parameter Name="userID" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="undoProduct">
-            <Parameter Name="userID" Mode="In" Type="Int32" />
-            <Parameter Name="productID" Mode="In" Type="Int32" />
-            <Parameter Name="piece" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getLoanbyUserID3" ReturnType="Collection(STOK_TAKIPModel.getLoanbyUserID3_Result)">
-            <Parameter Name="userID" Mode="In" Type="Int32" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="loginCheck_Result">
@@ -283,6 +295,15 @@
           <Property Type="String" Name="productName" Nullable="true" MaxLength="255" />
           <Property Type="Int32" Name="Column1" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="getLoanbyUserID2_Result">
+          <Property Type="String" Name="productName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Pieces" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="getLoanbyUserID3_Result">
+          <Property Type="String" Name="productName" Nullable="true" MaxLength="255" />
+          <Property Type="Int32" Name="Pieces" Nullable="true" />
+          <Property Type="Int32" Name="productID" Nullable="false" />
+        </ComplexType>
         <EntityType Name="loanDetail">
           <Key>
             <PropertyRef Name="loanID" />
@@ -291,7 +312,7 @@
           <Property Name="userID" Type="Int32" />
           <Property Name="loanByID" Type="Int32" />
           <Property Name="productID" Type="Int32" />
-          <Property Name="loanDate" Type="DateTime" Precision="0" />
+          <Property Name="loanDate" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="loanPieces" Type="Int32" />
           <NavigationProperty Name="product" Relationship="STOK_TAKIPModel.FK_loanDetails_products" FromRole="loanDetail" ToRole="product" />
           <NavigationProperty Name="user" Relationship="STOK_TAKIPModel.FK_loanDetails_users" FromRole="loanDetail" ToRole="user" />
@@ -396,15 +417,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="getLoanbyUserID2_Result">
-          <Property Type="String" Name="productName" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Pieces" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="getLoanbyUserID3_Result">
-          <Property Type="String" Name="productName" Nullable="true" MaxLength="255" />
-          <Property Type="Int32" Name="Pieces" Nullable="true" />
-          <Property Type="Int32" Name="productID" Nullable="false" />
-        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -444,6 +456,24 @@
               <ComplexTypeMapping TypeName="STOK_TAKIPModel.getLoanbyUserID_Result">
                 <ScalarProperty Name="productName" ColumnName="productName" />
                 <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getLoanbyUserID2" FunctionName="STOK_TAKIPModel.Store.getLoanbyUserID2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="STOK_TAKIPModel.getLoanbyUserID2_Result">
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="undoProduct" FunctionName="STOK_TAKIPModel.Store.undoProduct" />
+          <FunctionImportMapping FunctionImportName="getLoanbyUserID3" FunctionName="STOK_TAKIPModel.Store.getLoanbyUserID3">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="STOK_TAKIPModel.getLoanbyUserID3_Result">
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
+                <ScalarProperty Name="productID" ColumnName="productID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -503,24 +533,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="getLoanbyUserID2" FunctionName="STOK_TAKIPModel.Store.getLoanbyUserID2">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="STOK_TAKIPModel.getLoanbyUserID2_Result">
-                <ScalarProperty Name="productName" ColumnName="productName" />
-                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="undoProduct" FunctionName="STOK_TAKIPModel.Store.undoProduct" />
-          <FunctionImportMapping FunctionImportName="getLoanbyUserID3" FunctionName="STOK_TAKIPModel.Store.getLoanbyUserID3">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="STOK_TAKIPModel.getLoanbyUserID3_Result">
-                <ScalarProperty Name="productName" ColumnName="productName" />
-                <ScalarProperty Name="Pieces" ColumnName="Pieces" />
-                <ScalarProperty Name="productID" ColumnName="productID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="STOK_TAKIPModel.Store.sp_alterdiagram" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

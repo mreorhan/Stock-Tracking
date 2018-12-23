@@ -62,7 +62,7 @@ namespace TestDevx
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("createNewProduct", productNameParameter, productFeaturesParameter, purchasedDateParameter, purchasedByIDParameter, purchasedPriceParameter, piecesParameter);
         }
     
-        public virtual int addLoan(Nullable<int> userID, Nullable<int> loanByID, Nullable<int> productID, Nullable<System.DateTime> loanDate, Nullable<int> loanPieces)
+        public virtual int addLoan(Nullable<int> userID, Nullable<int> loanByID, Nullable<int> productID, string loanDate, Nullable<int> loanPieces)
         {
             var userIDParameter = userID.HasValue ?
                 new ObjectParameter("userID", userID) :
@@ -76,9 +76,9 @@ namespace TestDevx
                 new ObjectParameter("productID", productID) :
                 new ObjectParameter("productID", typeof(int));
     
-            var loanDateParameter = loanDate.HasValue ?
+            var loanDateParameter = loanDate != null ?
                 new ObjectParameter("loanDate", loanDate) :
-                new ObjectParameter("loanDate", typeof(System.DateTime));
+                new ObjectParameter("loanDate", typeof(string));
     
             var loanPiecesParameter = loanPieces.HasValue ?
                 new ObjectParameter("loanPieces", loanPieces) :
@@ -206,6 +206,27 @@ namespace TestDevx
                 new ObjectParameter("userID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getLoanbyUserID3_Result>("getLoanbyUserID3", userIDParameter);
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
         }
     }
 }

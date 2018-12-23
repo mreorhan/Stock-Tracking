@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.cbProducts = new System.Windows.Forms.ComboBox();
+            this.cbRemoveProducts = new System.Windows.Forms.ComboBox();
             this.btnRemoveProduct = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.gridRegistered = new DevExpress.XtraGrid.GridControl();
@@ -50,17 +50,17 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Choose a Product for Delete:";
             // 
-            // cbProducts
+            // cbRemoveProducts
             // 
-            this.cbProducts.DropDownWidth = 350;
-            this.cbProducts.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.cbProducts.FormattingEnabled = true;
-            this.cbProducts.Location = new System.Drawing.Point(93, 133);
-            this.cbProducts.Margin = new System.Windows.Forms.Padding(8);
-            this.cbProducts.Name = "cbProducts";
-            this.cbProducts.Size = new System.Drawing.Size(470, 33);
-            this.cbProducts.TabIndex = 5;
-            this.cbProducts.SelectedIndexChanged += new System.EventHandler(this.cbProducts_SelectedIndexChanged);
+            this.cbRemoveProducts.DropDownWidth = 350;
+            this.cbRemoveProducts.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cbRemoveProducts.FormattingEnabled = true;
+            this.cbRemoveProducts.Location = new System.Drawing.Point(93, 133);
+            this.cbRemoveProducts.Margin = new System.Windows.Forms.Padding(8);
+            this.cbRemoveProducts.Name = "cbRemoveProducts";
+            this.cbRemoveProducts.Size = new System.Drawing.Size(470, 33);
+            this.cbRemoveProducts.TabIndex = 5;
+            this.cbRemoveProducts.SelectedIndexChanged += new System.EventHandler(this.cbProducts_SelectedIndexChanged);
             // 
             // btnRemoveProduct
             // 
@@ -114,7 +114,7 @@
             this.Controls.Add(this.gridRegistered);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbProducts);
+            this.Controls.Add(this.cbRemoveProducts);
             this.Name = "ucRemoveProduct";
             this.Size = new System.Drawing.Size(911, 487);
             this.Load += new System.EventHandler(this.ucRemoveProduct_Load);
@@ -129,7 +129,7 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cbProducts;
+        private System.Windows.Forms.ComboBox cbRemoveProducts;
         private DevExpress.XtraEditors.SimpleButton btnRemoveProduct;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private DevExpress.XtraGrid.GridControl gridRegistered;

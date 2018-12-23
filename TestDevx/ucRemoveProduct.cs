@@ -38,13 +38,13 @@ namespace TestDevx
         public void getData()
         {
             // Refresh Items After Deleted Product
-            cbProducts.Items.Clear();
+            cbRemoveProducts.Items.Clear();
             STOK_TAKIPEntities db = new STOK_TAKIPEntities();
             foreach (var item in db.products)
             {
                 if (item.isAvailable == 1)
                 {
-                    cbProducts.Items.Add(item.productName);
+                    cbRemoveProducts.Items.Add(item.productName);
                     productList.Add(item);
                 }
             }
@@ -55,20 +55,22 @@ namespace TestDevx
 
         private void btnRemoveProduct_Click(object sender, EventArgs e)
         {
-            if(cbProducts.SelectedIndex==-1)
+            
+            if(cbRemoveProducts.SelectedIndex==-1)
             {
                 MessageBox.Show("You must fill in the required fields!");
                 return;
             }
-            using (var context = new STOK_TAKIPEntities())
-            {
+            
                 product p = new product();
-                var result = productList.Find(x => x.productName == cbProducts.SelectedItem.ToString());
+                var result = productList.Find(x => x.productName == cbRemoveProducts.SelectedItem.ToString());
                 try
+                {
+                using (var context2 = new STOK_TAKIPEntities())
                 {
                     //Delete Product from stored procedure
                     var productID = new SqlParameter("@productID", result.productID);
-                    context.Database.ExecuteSqlCommand("exec removeProduct @productID",productID);
+                    context2.Database.ExecuteSqlCommand("exec removeProduct @productID",productID);
                     MessageBox.Show("The transaction was successful!");
                     getData();
                     gridRegistered.Visible = false;
@@ -76,23 +78,45 @@ namespace TestDevx
                     ucProduct.Instance = null;
                     ucLoantoUser.Instance = null;
                     ucUnusedProducts.Instance = null;
+                    cbRemoveProducts.SelectedIndex = -1;
+
                 }
+
+
+            }
                 catch (SqlException err)
                 {
+                    formLogin.Instance = null;
                     switch (err.Number)
                     {
                         //If the product registered before
                         case 35100:
-                            MessageBox.Show("There are users associated with this product!");
+                            {
+                                MessageBox.Show("There are users associated with this product!");
+                                
+                                STOK_TAKIPEntities db = new STOK_TAKIPEntities();
+                            var model = from l in db.loanDetails
+                                        join pr in db.products on l.productID equals pr.productID
+                                        join u in db.users on l.userID equals u.id
+                                        where l.loanPieces >= 1
+                                        where pr.productID == result.productID
+                                        select new
+                                        {
+                                            pr.productName,
+                                            pr.productFeatures,
+                                            Who = u.name + " " + u.lastName,
+                                            l.loanDate,
+                                            How_Many = l.loanPieces
+                                        };
                             gridRegistered.Visible = true;
-                            gridRegistered.DataSource = context.list(result.productID).ToList();
+                            gridRegistered.DataSource = model.ToList();
+                            }
                         break;
                         default:
                             MessageBox.Show("This product is not deleting!");
                             throw;
                     }
                 }
-            }
         }
 
         private void cbProducts_SelectedIndexChanged(object sender, EventArgs e)

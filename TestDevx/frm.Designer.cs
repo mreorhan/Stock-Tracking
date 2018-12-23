@@ -461,6 +461,7 @@
             this.NavigationControl = this.accordionControl1;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "main";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_FormClosing);
             this.Load += new System.EventHandler(this.frm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit1)).EndInit();

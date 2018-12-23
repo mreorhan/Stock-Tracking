@@ -64,8 +64,8 @@ namespace TestDevx
             if (txtPiece.Text == "" || cbUser.SelectedIndex==-1)
             {
                 MessageBox.Show("You must fill in the required fields");
-                return;
             }
+            else { 
             if (int.Parse(lblAvailable.Text) >= int.Parse(txtPiece.Text))
             {
                 // Zimmetleme işlemleri burada gerçekleştiriliyor
@@ -75,7 +75,7 @@ namespace TestDevx
                 loanDetail l = new loanDetail();
                 product p = new product();
                 l.productID = result.productID;
-                l.loanDate = DateTime.Now;
+                l.loanDate = DateTime.Now.ToString();
                 l.userID = int.Parse(user[0]);
                 l.loanPieces = int.Parse(txtPiece.Text);
                 l.loanByID = 1; // sonradan değiştir.
@@ -97,10 +97,12 @@ namespace TestDevx
                         MessageBox.Show("The transaction was successful!");
                         txtPiece.Text = "";
                         ucLoans.Instance = null;
+                        ucProduct.Instance = null;
                         ucRemoveProduct.Instance = null;
                         ucUndoProduct.Instance = null;
+                        ucDepartmentChief.Instance = null;
+
                         cbUser.SelectedIndex = -1;
-                        cbProducts.SelectedIndex = -1;
                     }
                     catch
                     {
@@ -111,7 +113,7 @@ namespace TestDevx
             }
             else
                 MessageBox.Show("You can't write more than the maximum number of products!");
-
+            }
         }
 
         private void cbProducts_SelectedIndexChanged(object sender, EventArgs e)

@@ -46,6 +46,7 @@ namespace TestDevx
                 {
                     using (MD5 md5 = MD5.Create())
                     {
+                        //Hashing with MD5
                         string strHashedPassword = md5.Hash(password);
                         context.loginCheck(username, strHashedPassword);
                         using (STOK_TAKIPEntities db = new STOK_TAKIPEntities())
@@ -78,7 +79,6 @@ namespace TestDevx
         private void formLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
-
         }
     }
 }

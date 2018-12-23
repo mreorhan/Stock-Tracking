@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
+using DevExpress.Data.Extensions;
 
 namespace TestDevx
 {
     public partial class ucUndoProduct : DevExpress.XtraEditors.XtraUserControl
     {
+        private List<int> productList= new List<int>();
         private string[] list;
         private static ucUndoProduct _instance;
         public static ucUndoProduct Instance
@@ -58,7 +60,7 @@ namespace TestDevx
                var products = db.getLoanbyUserID3(int.Parse(list[0]));
                 foreach(var i in products)
                 {
-                    cbProducts.Items.Add(i.Pieces+" - "+i.productName+" ("+i.productID+")");
+                    cbProducts.Items.Add(i.Pieces+" - "+i.productName+"-"+i.productID);
                     lblAvailable.Text = i.Pieces.ToString();
                 }
             }
@@ -84,13 +86,14 @@ namespace TestDevx
 
         private void btnUndoLoan_Click(object sender, EventArgs e)
         {
-            if(cbProducts.SelectedIndex != -1 && cbUser.SelectedIndex!=-1 && txtPiece.Text != "")
+            int oProp= cbProducts.SelectedIndex;
+            if (cbProducts.SelectedIndex != -1 && cbUser.SelectedIndex!=-1 && txtPiece.Text != "")
             {
 
                 using (var context = new STOK_TAKIPEntities())
                 {
                     string txtuserID= cbUser.SelectedItem.ToString().Split('-')[0];
-                    string txtProductID= "1";
+                    string txtProductID = cbProducts.SelectedItem.ToString().Split('-')[2];
                     string txtpieces = txtPiece.Text;
                     //get sql parameters for addLoan procedure
                     var userID = new SqlParameter("@userID", int.Parse(txtuserID));
@@ -107,8 +110,6 @@ namespace TestDevx
                         ucProduct.Instance = null;
                         ucLoantoUser.Instance = null;
                         ucRemoveProduct.Instance = null;
-                        cbUser.SelectedIndex = -1;
-                        cbProducts.SelectedIndex = -1;
                     }
                     catch
                     {

@@ -18,7 +18,7 @@ namespace TestDevx
         public Nullable<int> userID { get; set; }
         public Nullable<int> loanByID { get; set; }
         public Nullable<int> productID { get; set; }
-        public Nullable<System.DateTime> loanDate { get; set; }
+        public string loanDate { get; set; }
         public Nullable<int> loanPieces { get; set; }
     
         public virtual product product { get; set; }

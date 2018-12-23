@@ -117,6 +117,7 @@ namespace TestDevx
 
         private void frm_Load(object sender, EventArgs e)
         {
+            //Redirect from user role
             if (getUser[4].ToString() == "2")
             {
                 btnAddUser.Links[0].Visible = false;
@@ -127,17 +128,18 @@ namespace TestDevx
                 btnAddUser.Links[0].Visible = false;
 
                 ribbonPageGroup1.Visible = false;
-                if (!container.Controls.Contains(ucLoans.Instance))
+                if (!container.Controls.Contains(ucDepartmentChief.Instance))
                 {
-                    container.Controls.Add(ucLoans.Instance);
-                    ucLoans.Instance.Dock = DockStyle.Fill;
-                    ucLoans.Instance.BringToFront();
+                    container.Controls.Add(ucDepartmentChief.Instance);
+                    ucDepartmentChief.Instance.Dock = DockStyle.Fill;
+                    ucDepartmentChief.Instance.BringToFront();
                 }
-                ucLoans.Instance.BringToFront();
+                ucDepartmentChief.Instance.BringToFront();
             }
             lblName.Text = getUser[1].ToString() + " " + getUser[2].ToString() + "(" + getUser[0].ToString() + ")";
         }
 
+        //button click events
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (!container.Controls.Contains(ucAccount.Instance))
@@ -180,6 +182,11 @@ namespace TestDevx
                 ucUndoProduct.Instance.BringToFront();
             }
             ucUndoProduct.Instance.BringToFront();
+        }
+
+        private void frm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
