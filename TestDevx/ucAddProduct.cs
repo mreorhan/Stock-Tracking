@@ -72,32 +72,7 @@ namespace TestDevx
             purc.purchasedByID = userID;
             purc.purchasePrice = int.Parse(txtPrice.Text);
 
-
-            using (var context = new STOK_TAKIPEntities())
-            {
-                var productName = new SqlParameter("@productName", p.productName);
-                var productFeatures = new SqlParameter("@productFeatures", p.productFeatures);
-                var purchasedDate = new SqlParameter("@purchasedDate", purc.purchasedDate);
-                var purchasedByID = new SqlParameter("@purchasedByID", purc.purchasedByID);
-                var purchasedPrice = new SqlParameter("@purchasedPrice", purc.purchasePrice);
-                var pieces = new SqlParameter("@pieces", p.pieces);
-
-                try
-                {
-                    context.Database.ExecuteSqlCommand("exec createNewProduct @productName , @productFeatures , @purchasedDate , @purchasedByID, @purchasedPrice, @pieces",
-                    productName, productFeatures, purchasedDate, purchasedByID, purchasedPrice, pieces);
-
-                    MessageBox.Show("The transaction was successful!");
-                    ucProduct.Instance = null;
-                    ucRemoveProduct.Instance = null;
-                    ucLoantoUser.Instance = null;
-                    ucEditProduct.Instance = null;
-                }
-                catch {
-                    MessageBox.Show("The transaction was failed!");
-                }
-
-                }
+            Controller.ProductController.addProduct(p, purc);
 
         }
 

@@ -70,39 +70,13 @@ namespace TestDevx
                 l.loanDate = DateTime.Now.ToString();
                 l.userID = int.Parse(user[0]);
                 l.loanPieces = int.Parse(txtPiece.Text);
-                l.loanByID = 1; // sonradan değiştir.
+                l.loanByID = 1;
 
-                using (var context = new STOK_TAKIPEntities())
-                {
-                    //get sql parameters for addLoan procedure
-                    var userID = new SqlParameter("@userID", l.userID);
-                    var loanByID = new SqlParameter("@loanByID", l.loanByID);
-                    var productID = new SqlParameter("@productID", l.productID);
-                    var loanDate = new SqlParameter("@loanDate", l.loanDate);
-                    var pieces = new SqlParameter("@loanPieces", l.loanPieces);
-
-                    try
-                    {
-                        //execute addLoan stored procedure
-                        context.Database.ExecuteSqlCommand("exec addLoan @userID , @loanByID , @productID , @loanDate, @loanPieces",
-                        userID, loanByID, productID, loanDate, pieces);
-                        MessageBox.Show("The transaction was successful!");
-                        txtPiece.Text = "";
-                        ucLoans.Instance = null;
-                        ucProduct.Instance = null;
-                        ucRemoveProduct.Instance = null;
-                        ucUndoProduct.Instance = null;
-                        ucDepartmentChief.Instance = null;
-
-                        cbUser.SelectedIndex = -1;
-                    }
-                    catch
-                    {
-                        MessageBox.Show("The transaction was failed!");
-                    }
-
+                //Send Loan Controller
+                Controller.LoanController.loanToUser(l);
+                txtPiece.Text = "";
+                cbUser.SelectedIndex = -1;
                 }
-            }
             else
                 MessageBox.Show("You can't write more than the maximum number of products!");
             }

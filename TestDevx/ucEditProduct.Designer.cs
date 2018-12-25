@@ -150,7 +150,7 @@
             // 
             this.btnRemoveProduct.Location = new System.Drawing.Point(773, 13);
             this.btnRemoveProduct.Name = "btnRemoveProduct";
-            this.btnRemoveProduct.Size = new System.Drawing.Size(168, 49);
+            this.btnRemoveProduct.Size = new System.Drawing.Size(178, 49);
             this.btnRemoveProduct.TabIndex = 7;
             this.btnRemoveProduct.Text = "Edit Product";
             this.btnRemoveProduct.Click += new System.EventHandler(this.btnRemoveProduct_Click);

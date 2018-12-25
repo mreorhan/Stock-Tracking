@@ -45,40 +45,27 @@ namespace TestDevx
 
             txtLastName.Text = textInfo.ToTitleCase(txtLastName.Text.ToLower());
             txtLastName.Select(txtLastName.Text.Length, 0);
+
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string name = txtName.Text;
             string lastname = txtLastName.Text;
             int userRole = cbUserRole.SelectedIndex+1;
 
-            if(username!="" && password!="" && name!="" && lastname!="" && cbUserRole.SelectedIndex != -1) { 
+            if (username!="" && password!="" && name!="" && lastname!="" && cbUserRole.SelectedIndex != -1) {
 
-            using (var context = new STOK_TAKIPEntities())
-            {
-                try
-                {
-                    using (MD5 md5 = MD5.Create())
-                    {
-                        string strHashedPassword = md5.Hash(password);
-                        context.addUser(name, lastname, username, strHashedPassword, userRole);
-                        ucUsers.Instance = null;
-                        ucLoantoUser.Instance = null;
-                        ucEditUser.Instance = null;
-                        
-                        MessageBox.Show("User Created");
-                        txtName.Text = "";
-                        txtLastName.Text = "";
-                        txtPassword.Text = "";
-                        txtUsername.Text = "";
-                        cbUserRole.SelectedIndex = -1;
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Something went wrong!");
-                }
-
-                }
+                user user1 = new user();
+                user1.username = txtUsername.Text;
+                user1.name = txtName.Text;
+                user1.lastName = txtLastName.Text;
+                user1.password = txtPassword.Text;
+                user1.userTypeID = cbUserRole.SelectedIndex + 1;
+                Controller.UserController.addUser(user1);
+                txtName.Text = "";
+                txtLastName.Text = "";
+                txtPassword.Text = "";
+                txtUsername.Text = "";
+                cbUserRole.SelectedIndex = -1;
 
             }
             else

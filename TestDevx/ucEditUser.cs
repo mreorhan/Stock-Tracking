@@ -57,37 +57,11 @@ namespace TestDevx
                 return;
             }
             if(result.id.ToString()!="" && txtUserName.Text!="" && txtPassword.Text != "") {
-
-            using (var context = new STOK_TAKIPEntities())
-            {
-                    //get sql parameters for edituser procedure
-                    using (MD5 md5 = MD5.Create())
-                    {
-                        //Hashing with MD5
-                        string strHashedPassword = md5.Hash(txtPassword.Text);
-                        var userID = new SqlParameter("@userID", result.id);
-                        var userName = new SqlParameter("@username", txtUserName.Text);
-                        var userPassword = new SqlParameter("@password", strHashedPassword);
-                    
-                try
-                {
-                    //execute edituser stored procedure
-                    context.Database.ExecuteSqlCommand("exec editUser @userID , @username , @password",
-                    userID, userName, userPassword);
-                    MessageBox.Show("The transaction was successful!");
-                    ucLoans.Instance = null;
-                    ucProduct.Instance = null;
-                    ucRemoveProduct.Instance = null;
-                    ucUndoProduct.Instance = null;
-                    ucDepartmentChief.Instance = null;
-                }
-                catch
-                {
-                    MessageBox.Show("The transaction was failed!");
-                    }
-                    }
-
-                }
+                user user1 = new user();
+                user1.username = txtUserName.Text;
+                user1.id = result.id;
+                user1.password = txtPassword.Text;
+                Controller.UserController.editUser(user1);
 
             }
             else
