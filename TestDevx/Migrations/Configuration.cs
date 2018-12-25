@@ -4,15 +4,16 @@ namespace TestDevx.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using TestDevx.Model;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TestDevx.STOK_TAKIPEntities>
+    internal sealed class Configuration : DbMigrationsConfiguration<STOK_TAKIPEntities>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(TestDevx.STOK_TAKIPEntities context)
+        protected override void Seed(STOK_TAKIPEntities context)
         {
             //  This method will be called after migrating to the latest version.
 

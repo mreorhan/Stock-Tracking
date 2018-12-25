@@ -85,130 +85,130 @@
     <Compile Include="frm.Designer.cs">
       <DependentUpon>frm.cs</DependentUpon>
     </Compile>
-    <Compile Include="getLoanbyUserID2_Result.cs">
+    <Compile Include="Model\getLoanbyUserID2_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="getLoanbyUserID3_Result.cs">
+    <Compile Include="Model\getLoanbyUserID3_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="getLoanbyUserID_Result.cs">
+    <Compile Include="Model\getLoanbyUserID_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="list_Result.cs">
+    <Compile Include="Model\list_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="loanDetail.cs">
+    <Compile Include="Model\loanDetail.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="loginCheck_Result.cs">
+    <Compile Include="Model\loginCheck_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Model.Context.cs">
+    <Compile Include="Model\Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs">
+    <Compile Include="Model\Model.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model.Designer.cs">
+    <Compile Include="Model\Model.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="product.cs">
+    <Compile Include="Model\product.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="purchase.cs">
+    <Compile Include="Model\purchase.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ucAccount.cs">
+    <Compile Include="View\ucAccount.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucAccount.Designer.cs">
+    <Compile Include="View\ucAccount.Designer.cs">
       <DependentUpon>ucAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucAddProduct.cs">
+    <Compile Include="View\ucAddProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucAddProduct.Designer.cs">
+    <Compile Include="View\ucAddProduct.Designer.cs">
       <DependentUpon>ucAddProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucAddUser.cs">
+    <Compile Include="View\ucAddUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucAddUser.Designer.cs">
+    <Compile Include="View\ucAddUser.Designer.cs">
       <DependentUpon>ucAddUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucDepartmentChief.cs">
+    <Compile Include="View\ucDepartmentChief.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucDepartmentChief.Designer.cs">
+    <Compile Include="View\ucDepartmentChief.Designer.cs">
       <DependentUpon>ucDepartmentChief.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucEditProduct.cs">
+    <Compile Include="View\ucEditProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucEditProduct.Designer.cs">
+    <Compile Include="View\ucEditProduct.Designer.cs">
       <DependentUpon>ucEditProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucEditUser.cs">
+    <Compile Include="View\ucEditUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucEditUser.Designer.cs">
+    <Compile Include="View\ucEditUser.Designer.cs">
       <DependentUpon>ucEditUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucLoans.cs">
+    <Compile Include="View\ucLoans.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucLoans.Designer.cs">
+    <Compile Include="View\ucLoans.Designer.cs">
       <DependentUpon>ucLoans.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucLoantoUser.cs">
+    <Compile Include="View\ucLoantoUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucLoantoUser.Designer.cs">
+    <Compile Include="View\ucLoantoUser.Designer.cs">
       <DependentUpon>ucLoantoUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucProduct.cs">
+    <Compile Include="View\ucProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucProduct.Designer.cs">
+    <Compile Include="View\ucProduct.Designer.cs">
       <DependentUpon>ucProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucRemoveProduct.cs">
+    <Compile Include="View\ucRemoveProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucRemoveProduct.Designer.cs">
+    <Compile Include="View\ucRemoveProduct.Designer.cs">
       <DependentUpon>ucRemoveProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucUndoProduct.cs">
+    <Compile Include="View\ucUndoProduct.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucUndoProduct.Designer.cs">
+    <Compile Include="View\ucUndoProduct.Designer.cs">
       <DependentUpon>ucUndoProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucUnusedProducts.cs">
+    <Compile Include="View\ucUnusedProducts.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucUnusedProducts.Designer.cs">
+    <Compile Include="View\ucUnusedProducts.Designer.cs">
       <DependentUpon>ucUnusedProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="ucUsers.cs">
+    <Compile Include="View\ucUsers.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucUsers.Designer.cs">
+    <Compile Include="View\ucUsers.Designer.cs">
       <DependentUpon>ucUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="user.cs">
+    <Compile Include="Model\user.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="userType.cs">
+    <Compile Include="Model\userType.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="formLogin.resx">
@@ -227,50 +227,50 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ucAccount.resx">
+    <EmbeddedResource Include="View\ucAccount.resx">
       <DependentUpon>ucAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucAddProduct.resx">
+    <EmbeddedResource Include="View\ucAddProduct.resx">
       <DependentUpon>ucAddProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucAddUser.resx">
+    <EmbeddedResource Include="View\ucAddUser.resx">
       <DependentUpon>ucAddUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucDepartmentChief.resx">
+    <EmbeddedResource Include="View\ucDepartmentChief.resx">
       <DependentUpon>ucDepartmentChief.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucEditProduct.resx">
+    <EmbeddedResource Include="View\ucEditProduct.resx">
       <DependentUpon>ucEditProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucEditUser.resx">
+    <EmbeddedResource Include="View\ucEditUser.resx">
       <DependentUpon>ucEditUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucLoans.resx">
+    <EmbeddedResource Include="View\ucLoans.resx">
       <DependentUpon>ucLoans.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucLoantoUser.resx">
+    <EmbeddedResource Include="View\ucLoantoUser.resx">
       <DependentUpon>ucLoantoUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucProduct.resx">
+    <EmbeddedResource Include="View\ucProduct.resx">
       <DependentUpon>ucProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucRemoveProduct.resx">
+    <EmbeddedResource Include="View\ucRemoveProduct.resx">
       <DependentUpon>ucRemoveProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucUndoProduct.resx">
+    <EmbeddedResource Include="View\ucUndoProduct.resx">
       <DependentUpon>ucUndoProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucUnusedProducts.resx">
+    <EmbeddedResource Include="View\ucUnusedProducts.resx">
       <DependentUpon>ucUnusedProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucUsers.resx">
+    <EmbeddedResource Include="View\ucUsers.resx">
       <DependentUpon>ucUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Model.edmx">
+    <EntityDeploy Include="Model\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model.edmx.diagram">
+    <None Include="Model\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -288,12 +288,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model.Context.tt">
+    <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
-    <Content Include="Model.tt">
+    <Content Include="Model\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>

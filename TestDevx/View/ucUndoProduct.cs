@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using DevExpress.Data.Extensions;
+using TestDevx.Model;
 
 namespace TestDevx
 {

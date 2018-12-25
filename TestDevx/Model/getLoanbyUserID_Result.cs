@@ -7,15 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestDevx
+namespace TestDevx.Model
 {
     using System;
     
-    public partial class list_Result
+    public partial class getLoanbyUserID_Result
     {
-        public string Name { get; set; }
-        public string Product_Name { get; set; }
-        public Nullable<System.DateTime> Registered_Date { get; set; }
-        public Nullable<int> How_Many_ { get; set; }
+        public string productName { get; set; }
+        public Nullable<int> Column1 { get; set; }
     }
 }

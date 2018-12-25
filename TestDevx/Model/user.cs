@@ -7,23 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestDevx
+namespace TestDevx.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class userType
+    public partial class user
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public userType()
+        public user()
         {
-            this.users = new HashSet<user>();
+            this.loanDetails = new HashSet<loanDetail>();
         }
     
-        public int userTypeID { get; set; }
-        public string userType1 { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string lastName { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public Nullable<System.DateTime> lastLogin { get; set; }
+        public Nullable<int> userTypeID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<user> users { get; set; }
+        public virtual ICollection<loanDetail> loanDetails { get; set; }
+        public virtual userType userType { get; set; }
     }
 }

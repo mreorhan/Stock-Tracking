@@ -8,18 +8,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using TestDevx.Model;
 
 namespace TestDevx
 {
-    public partial class ucLoans : DevExpress.XtraEditors.XtraUserControl
+    public partial class ucDepartmentChief : DevExpress.XtraEditors.XtraUserControl
     {
-        private static ucLoans _instance;
-        public static ucLoans Instance
+        private static ucDepartmentChief _instance;
+        public static ucDepartmentChief Instance
         {
             get
             {
                 if (_instance == null)
-                    _instance = new ucLoans();
+                    _instance = new ucDepartmentChief();
                 return _instance;
             }
             set
@@ -27,25 +28,21 @@ namespace TestDevx
                 _instance = value;
             }
         }
-        public ucLoans()
+        public ucDepartmentChief()
         {
             InitializeComponent();
         }
 
-        private void gridControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ucLoans_Load(object sender, EventArgs e)
+        private void ucDepartmentChief_Load(object sender, EventArgs e)
         {
             ucLoantoUser.Instance = null;
-            //We can see registered products in here
+            //We can see registered products in here (department chief)
             STOK_TAKIPEntities db = new STOK_TAKIPEntities();
             var model = from l in db.loanDetails
                         join p in db.products on l.productID equals p.productID
                         join u in db.users on l.userID equals u.id
-                        where(l.loanPieces>=1)
+                        where (l.loanPieces >= 1)
+                        where (u.userTypeID==3)
                         select new
                         {
                             p.productName,

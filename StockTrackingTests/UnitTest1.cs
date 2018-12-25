@@ -1,5 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TestDevx.Model;
+using TestDevx.Controller;
 namespace StockTrackingTests
 {
     [TestClass]
@@ -8,7 +10,7 @@ namespace StockTrackingTests
         [TestMethod]
         public void CreateProduct()
         {
-            TestDevx.purchase purchaseTest = new TestDevx.purchase
+           TestDevx.Model.purchase purchaseTest = new TestDevx.Model.purchase
             {
                 purchasedByID = 1,
                 purchasePrice = 4000,
@@ -16,7 +18,7 @@ namespace StockTrackingTests
                 isDeleted=false
 
             };
-            TestDevx.product productTest = new TestDevx.product {
+            TestDevx.Model.product productTest = new TestDevx.Model.product {
                 productName = "Test product",
                 productFeatures = "Test Features",
                 pieces=5,
@@ -29,41 +31,41 @@ namespace StockTrackingTests
         [TestMethod]
         public void addUser()
         {
-            TestDevx.user user1 = new TestDevx.user();
+            user user1 = new user();
             user1.username = "testhesabi";
             user1.name = "Test";
             user1.lastName = "Hesabı";
             user1.password = "1234";
             user1.userTypeID = 3; //Chief
 
-            TestDevx.Controller.UserController.addUser(user1);
+            UserController.addUser(user1);
         }
         [TestMethod]
         public void editUser()
         {
-            TestDevx.user user1 = new TestDevx.user
+            user user1 = new user
             {
                 id=42,
                 username = "test deneme hesabi",
                 password = "1234"
             };
 
-            TestDevx.Controller.UserController.editUser(user1);
+            UserController.editUser(user1);
         }
         [TestMethod]
         public void Login()
         {
-            TestDevx.user user1 = new TestDevx.user
+            user user1 = new user
             {
                 username = "emre",
                 password = "12345" // Yanlış şifre girdim ! Doğru şifre 1234
             };
-            TestDevx.Controller.UserController.checkUser(user1);
+            UserController.checkUser(user1);
         }
         [TestMethod]
         public void loanToUser()
         {
-            TestDevx.loanDetail loanDetail = new TestDevx.loanDetail
+            loanDetail loanDetail = new loanDetail
             {
                 loanByID=1,
                 loanDate=DateTime.Now.ToString(),
@@ -72,7 +74,7 @@ namespace StockTrackingTests
                 userID=44,
 
             };
-            TestDevx.Controller.LoanController.loanToUser(loanDetail);
+            LoanController.loanToUser(loanDetail);
         }
     }
 }

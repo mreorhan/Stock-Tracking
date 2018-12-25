@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Security.Cryptography;
 using System.Data.SqlClient;
-
+using TestDevx.Model;
 
 namespace TestDevx
 {

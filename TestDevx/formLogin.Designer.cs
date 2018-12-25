@@ -67,6 +67,7 @@
             this.txtUsername.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtUsername.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.Optimistic;
             this.txtUsername.Properties.Mask.EditMask = "\\p{L}+";
+            this.txtUsername.Properties.MaxLength = 50;
             this.txtUsername.Size = new System.Drawing.Size(336, 36);
             this.txtUsername.TabIndex = 1;
             // 
@@ -93,6 +94,7 @@
             this.txtPassword.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtPassword.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.Optimistic;
             this.txtPassword.Properties.Mask.EditMask = "\\p{L}+";
+            this.txtPassword.Properties.MaxLength = 50;
             this.txtPassword.Properties.UseSystemPasswordChar = true;
             this.txtPassword.Size = new System.Drawing.Size(336, 36);
             this.txtPassword.TabIndex = 2;

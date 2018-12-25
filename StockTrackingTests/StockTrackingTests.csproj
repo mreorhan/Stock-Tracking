@@ -64,9 +64,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestDevx\TestDevx.csproj">
+    <ProjectReference Include="..\TestDevx\StockTracking.csproj">
       <Project>{40a008c2-edca-43c8-9b77-4a528fa19568}</Project>
-      <Name>TestDevx</Name>
+      <Name>StockTracking</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

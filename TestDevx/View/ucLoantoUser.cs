@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using TestDevx.Model;
 
 namespace TestDevx
 {

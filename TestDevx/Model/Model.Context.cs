@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestDevx
+namespace TestDevx.Model
 {
     using System;
     using System.Data.Entity;

@@ -7,29 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestDevx
+namespace TestDevx.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class user
+    public partial class purchase
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public user()
+        public purchase()
         {
-            this.loanDetails = new HashSet<loanDetail>();
+            this.products = new HashSet<product>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
-        public string lastName { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public Nullable<System.DateTime> lastLogin { get; set; }
-        public Nullable<int> userTypeID { get; set; }
+        public int purchaseID { get; set; }
+        public string purchasedDate { get; set; }
+        public Nullable<int> purchasedByID { get; set; }
+        public Nullable<int> purchasePrice { get; set; }
+        public Nullable<bool> isDeleted { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<loanDetail> loanDetails { get; set; }
-        public virtual userType userType { get; set; }
+        public virtual ICollection<product> products { get; set; }
     }
 }
