@@ -22,10 +22,28 @@ namespace TestDevx
                     _instance = new ucAccount();
                 return _instance;
             }
+            set
+            {
+                _instance = value;
+            }
         }
+        public static string[] user;
+
+        public static void getUser(string[] u)
+        {
+            user = u;
+        }
+
         public ucAccount()
         {
             InitializeComponent();
+        }
+
+        private void ucAccount_Load(object sender, EventArgs e)
+        {
+            lblUsername.Text = user[0];
+            lblName.Text = user[1];
+            lblLastName.Text = user[2];
         }
     }
 }

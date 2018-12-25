@@ -65,6 +65,7 @@ namespace TestDevx
 
         private void accordionControlElement4_Click(object sender, EventArgs e)
         {
+            ucEditUser.Instance = null;
             if (!container.Controls.Contains(ucUsers.Instance))
             {
                 container.Controls.Add(ucUsers.Instance);
@@ -121,12 +122,13 @@ namespace TestDevx
             if (getUser[4].ToString() == "2")
             {
                 btnAddUser.Links[0].Visible = false;
+                btnEditUser.Links[0].Visible = false;
             }
             else if(getUser[4].ToString() == "3")
             {
                 accordionControl1.Visible = false;
                 btnAddUser.Links[0].Visible = false;
-
+                btnEditUser.Links[0].Visible = false;
                 ribbonPageGroup1.Visible = false;
                 if (!container.Controls.Contains(ucDepartmentChief.Instance))
                 {
@@ -142,6 +144,7 @@ namespace TestDevx
         //button click events
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
+            ucAccount.getUser(getUser);
             if (!container.Controls.Contains(ucAccount.Instance))
             {
                 container.Controls.Add(ucAccount.Instance);
@@ -149,6 +152,7 @@ namespace TestDevx
                 ucAccount.Instance.BringToFront();
             }
             ucAccount.Instance.BringToFront();
+            
         }
 
         private void btnEditProduct_ItemClick(object sender, ItemClickEventArgs e)
@@ -187,6 +191,22 @@ namespace TestDevx
         private void frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void barButtonItem6_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!container.Controls.Contains(ucEditUser.Instance))
+            {
+                container.Controls.Add(ucEditUser.Instance);
+                ucEditUser.Instance.Dock = DockStyle.Fill;
+                ucEditUser.Instance.BringToFront();
+            }
+            ucEditUser.Instance.BringToFront();
+        }
+
+        private void container_Click(object sender, EventArgs e)
+        {
+            ucAccount.Instance = null;
         }
     }
 }

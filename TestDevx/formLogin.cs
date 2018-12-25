@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using System.Security.Cryptography;
 using System.Data.SqlClient;
 
+
 namespace TestDevx
 {
     public partial class formLogin : DevExpress.XtraEditors.XtraForm
@@ -36,7 +37,7 @@ namespace TestDevx
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-
+            
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             
@@ -48,10 +49,11 @@ namespace TestDevx
                     {
                         //Hashing with MD5
                         string strHashedPassword = md5.Hash(password);
-                        context.loginCheck(username, strHashedPassword);
                         using (STOK_TAKIPEntities db = new STOK_TAKIPEntities())
                         {
-                            var result = db.users.Select(s => s).Where(x => x.username == username);
+                            var result = db.users.Select(s => s)
+                                .Where(x => x.username == username)
+                                .Where(x=>x.password==strHashedPassword);
                             ucProduct.Instance = null;
                             ucLoans.Instance = null;
                             frm login = new frm();

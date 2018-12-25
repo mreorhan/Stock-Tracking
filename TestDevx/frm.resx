@@ -299,6 +299,31 @@
         PC9zdmc+Cw==
 </value>
   </data>
+  <data name="btnEditUser.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjE4LjIsIFZlcnNpb249MTguMi4z
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAABMEAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSI+DQogIDxnIC8+DQogIDxnIGlkPSJSZW5hbWVfMV8iPg0K
+        ICAgIDxwYXRoIGQ9Ik0yLjEsMTZoMi4ybDAuNi0yLjNoMy4yTDguOCwxNkgxMUw3LjgsNkg1LjRMMi4x
+        LDE2eiBNNi40LDguN2MwLjEtMC4zLDAuMS0wLjYsMC4xLTAuOWgwLjEgICBjMCwwLjMsMC4xLDAuNiww
+        LjEsMC45bDEsMy4zSDUuNEw2LjQsOC43eiBNMTcuNSwxMC42YzAuNi0wLjIsMS4xLTAuNSwxLjUtMC45
+        YzAuNC0wLjQsMC42LTAuOSwwLjYtMS40YzAtMC43LTAuMy0xLjMtMC45LTEuNyAgIEMxOC4xLDYuMiwx
+        Ny4xLDYsMTUuOSw2SDEydjkuOVYxNmg0YzEuMiwwLDIuMi0wLjIsMi45LTAuOEMxOS43LDE0LjYsMjAs
+        MTQsMjAsMTNjMC0wLjYtMC4yLTEuMi0wLjctMS42ICAgQzE4LjksMTEsMTguMywxMC43LDE3LjUsMTAu
+        NnogTTE0LjQsNy43aDAuOWMxLjEsMCwxLjcsMC40LDEuNywxLjFjMCwwLjQtMC4xLDAuNy0wLjQsMC45
+        QzE2LjQsOS45LDE2LDEwLDE1LjUsMTBoLTEuMVY3Ljd6ICAgIE0xNywxMy44Yy0wLjMsMC4yLTAuOCww
+        LjQtMS4zLDAuNGgtMS4zdi0yLjZoMS4zYzAuNSwwLDAuOSwwLjEsMS4zLDAuM2MwLjMsMC4yLDAuNSww
+        LjYsMC41LDAuOUMxNy41LDEzLjMsMTcuNCwxMy42LDE3LDEzLjh6IiBmaWxsPSIjNzI3MjcyIiBjbGFz
+        cz0iQmxhY2siIC8+DQogICAgPHBhdGggZD0iTTI3LDE5bC04LDhsLTQtNGw4LThMMjcsMTl6IE0yOCwx
+        OGwxLjctMS43YzAuNC0wLjQsMC40LTEsMC0xLjNMMjcsMTIuM2MtMC40LTAuNC0xLTAuNC0xLjMsMEwy
+        NCwxNEwyOCwxOHogICAgTTE0LDI0djRoNEwxNCwyNHoiIGZpbGw9IiMxMTc3RDciIGNsYXNzPSJCbHVl
+        IiAvPg0KICA8L2c+DQo8L3N2Zz4L
+</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="aceCategories.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

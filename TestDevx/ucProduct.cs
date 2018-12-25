@@ -58,7 +58,7 @@ namespace TestDevx
 
         private void ucProduct_Load(object sender, EventArgs e)
         {
-
+            ucUndoProduct.Instance = null;
         }
     }
 }

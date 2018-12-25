@@ -73,8 +73,10 @@
             this.txtProductName.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtProductName.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.Optimistic;
             this.txtProductName.Properties.Mask.EditMask = "\\p{L}+";
+            this.txtProductName.Properties.MaxLength = 50;
             this.txtProductName.Size = new System.Drawing.Size(280, 34);
             this.txtProductName.TabIndex = 1;
+            this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             // 
             // txtProductFeatures
             // 
@@ -86,6 +88,7 @@
             this.txtProductFeatures.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtProductFeatures.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.Optimistic;
             this.txtProductFeatures.Properties.Mask.EditMask = "\\p{L}+";
+            this.txtProductFeatures.Properties.MaxLength = 50;
             this.txtProductFeatures.Size = new System.Drawing.Size(470, 34);
             this.txtProductFeatures.TabIndex = 3;
             // 
@@ -124,6 +127,7 @@
             this.datePurchasedDate.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.ClassicNew;
             this.datePurchasedDate.Properties.Mask.BeepOnError = true;
             this.datePurchasedDate.Properties.Mask.EditMask = "f";
+            this.datePurchasedDate.Properties.MaxValue = new System.DateTime(2018, 12, 25, 0, 0, 0, 0);
             this.datePurchasedDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             this.datePurchasedDate.Size = new System.Drawing.Size(280, 34);
             this.datePurchasedDate.TabIndex = 5;
@@ -151,6 +155,7 @@
             this.txtPrice.Properties.Mask.BeepOnError = true;
             this.txtPrice.Properties.Mask.EditMask = "c";
             this.txtPrice.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtPrice.Properties.MaxLength = 8;
             this.txtPrice.Size = new System.Drawing.Size(192, 34);
             this.txtPrice.TabIndex = 8;
             // 
@@ -177,6 +182,7 @@
             this.txtPiece.Properties.Mask.BeepOnError = true;
             this.txtPiece.Properties.Mask.EditMask = "\\d+";
             this.txtPiece.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtPiece.Properties.MaxLength = 5;
             this.txtPiece.Size = new System.Drawing.Size(120, 34);
             this.txtPiece.TabIndex = 10;
             // 

@@ -51,7 +51,8 @@
             // txtPiece
             // 
             this.txtPiece.EditValue = "";
-            this.txtPiece.Location = new System.Drawing.Point(444, 372);
+            this.txtPiece.Enabled = false;
+            this.txtPiece.Location = new System.Drawing.Point(441, 372);
             this.txtPiece.Name = "txtPiece";
             this.txtPiece.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.txtPiece.Properties.Appearance.Options.UseFont = true;
@@ -60,6 +61,7 @@
             this.txtPiece.Properties.Mask.BeepOnError = true;
             this.txtPiece.Properties.Mask.EditMask = "\\d+";
             this.txtPiece.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtPiece.Properties.MaxLength = 5;
             this.txtPiece.Size = new System.Drawing.Size(120, 34);
             this.txtPiece.TabIndex = 20;
             // 
@@ -68,7 +70,7 @@
             this.label5.AutoSize = true;
             this.label5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(440, 340);
+            this.label5.Location = new System.Drawing.Point(437, 340);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 23);
             this.label5.TabIndex = 19;
@@ -84,6 +86,7 @@
             this.txtProductFeatures.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtProductFeatures.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.Optimistic;
             this.txtProductFeatures.Properties.Mask.EditMask = "\\p{L}+";
+            this.txtProductFeatures.Properties.MaxLength = 50;
             this.txtProductFeatures.Size = new System.Drawing.Size(470, 34);
             this.txtProductFeatures.TabIndex = 14;
             // 
@@ -108,6 +111,7 @@
             this.txtProductName.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.txtProductName.Properties.Mask.AutoComplete = DevExpress.XtraEditors.Mask.AutoCompleteType.Optimistic;
             this.txtProductName.Properties.Mask.EditMask = "\\p{L}+";
+            this.txtProductName.Properties.MaxLength = 50;
             this.txtProductName.Size = new System.Drawing.Size(280, 34);
             this.txtProductName.TabIndex = 12;
             // 
@@ -166,7 +170,6 @@
             // 
             this.cbProducts.DropDownWidth = 350;
             this.cbProducts.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.cbProducts.FormattingEnabled = true;
             this.cbProducts.Location = new System.Drawing.Point(94, 131);
             this.cbProducts.Margin = new System.Windows.Forms.Padding(8);
             this.cbProducts.Name = "cbProducts";
@@ -202,6 +205,7 @@
             this.datePurchasedDate.Properties.CalendarView = DevExpress.XtraEditors.Repository.CalendarView.ClassicNew;
             this.datePurchasedDate.Properties.Mask.BeepOnError = true;
             this.datePurchasedDate.Properties.Mask.EditMask = "f";
+            this.datePurchasedDate.Properties.MaxValue = new System.DateTime(((long)(0)));
             this.datePurchasedDate.Properties.VistaDisplayMode = DevExpress.Utils.DefaultBoolean.False;
             this.datePurchasedDate.Size = new System.Drawing.Size(280, 34);
             this.datePurchasedDate.TabIndex = 15;

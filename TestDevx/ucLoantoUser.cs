@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 
 namespace TestDevx
@@ -29,7 +22,6 @@ namespace TestDevx
                 _instance = value;
             }
         }
-        
         public ucLoantoUser()
         {
             InitializeComponent();
@@ -61,7 +53,7 @@ namespace TestDevx
 
         private void btnAddLoan_Click(object sender, EventArgs e)
         {
-            if (txtPiece.Text == "" || cbUser.SelectedIndex==-1)
+            if (txtPiece.Text == "" || cbUser.SelectedIndex==-1 || string.IsNullOrWhiteSpace(cbProducts.Text.ToString()))
             {
                 MessageBox.Show("You must fill in the required fields");
             }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Security.Cryptography;
+using System.Globalization;
 
 namespace TestDevx
 {
@@ -35,7 +36,15 @@ namespace TestDevx
 
         private void btnAddPRoduct_Click(object sender, EventArgs e)
         {
-            
+            CultureInfo cultureInfo = System.Threading.Thread.CurrentThread.CurrentCulture;
+            TextInfo textInfo = cultureInfo.TextInfo;
+
+            //Change To Upper Case First Letter
+            txtName.Text = textInfo.ToTitleCase(txtName.Text.ToLower());
+            txtName.Select(txtName.Text.Length, 0);
+
+            txtLastName.Text = textInfo.ToTitleCase(txtLastName.Text.ToLower());
+            txtLastName.Select(txtLastName.Text.Length, 0);
             string username = txtUsername.Text;
             string password = txtPassword.Text;
             string name = txtName.Text;
@@ -54,6 +63,8 @@ namespace TestDevx
                         context.addUser(name, lastname, username, strHashedPassword, userRole);
                         ucUsers.Instance = null;
                         ucLoantoUser.Instance = null;
+                        ucEditUser.Instance = null;
+                        
                         MessageBox.Show("User Created");
                         txtName.Text = "";
                         txtLastName.Text = "";

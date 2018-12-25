@@ -138,6 +138,11 @@
           <Parameter Name="productFeatures" Type="nvarchar" Mode="In" />
           <Parameter Name="productPiece" Type="int" Mode="In" />
         </Function>
+        <Function Name="editUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userID" Type="int" Mode="In" />
+          <Parameter Name="username" Type="nvarchar" Mode="In" />
+          <Parameter Name="password" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="getLoanbyUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userID" Type="int" Mode="In" />
         </Function>
@@ -274,6 +279,11 @@
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="version" Mode="In" Type="Int32" />
             <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="editUser">
+            <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="username" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="loginCheck_Result">
@@ -534,6 +544,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="STOK_TAKIPModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="editUser" FunctionName="STOK_TAKIPModel.Store.editUser" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

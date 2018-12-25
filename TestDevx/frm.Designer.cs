@@ -55,6 +55,7 @@
             this.btnEditProduct = new DevExpress.XtraBars.BarButtonItem();
             this.btnAddUser = new DevExpress.XtraBars.BarButtonItem();
             this.btnProductCancel = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEditUser = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageCategory1 = new DevExpress.XtraBars.Ribbon.RibbonPageCategory();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.user = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -117,6 +118,7 @@
             this.container.Name = "container";
             this.container.Size = new System.Drawing.Size(981, 760);
             this.container.TabIndex = 0;
+            this.container.Click += new System.EventHandler(this.container_Click);
             // 
             // lblName
             // 
@@ -156,9 +158,10 @@
             this.btnLogout,
             this.btnEditProduct,
             this.btnAddUser,
-            this.btnProductCancel});
+            this.btnProductCancel,
+            this.btnEditUser});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 18;
+            this.ribbonControl1.MaxItemId = 19;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.ribbonPageCategory1});
@@ -273,6 +276,14 @@
             this.btnProductCancel.Name = "btnProductCancel";
             this.btnProductCancel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnProductCancel_ItemClick);
             // 
+            // btnEditUser
+            // 
+            this.btnEditUser.Caption = "Edit User";
+            this.btnEditUser.Id = 18;
+            this.btnEditUser.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnEditUser.ImageOptions.SvgImage")));
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
+            // 
             // ribbonPageCategory1
             // 
             this.ribbonPageCategory1.Name = "ribbonPageCategory1";
@@ -292,6 +303,7 @@
             this.user.ItemLinks.Add(this.barButtonGroup1, true);
             this.user.ItemLinks.Add(this.barButtonItem1);
             this.user.ItemLinks.Add(this.btnAddUser);
+            this.user.ItemLinks.Add(this.btnEditUser);
             this.user.Name = "user";
             this.user.ShowCaptionButton = false;
             this.user.Text = "User Settings";
@@ -519,5 +531,6 @@
         private DevExpress.XtraBars.BarButtonItem btnAddUser;
         private DevExpress.XtraBars.BarButtonItem btnProductCancel;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
+        private DevExpress.XtraBars.BarButtonItem btnEditUser;
     }
 }
