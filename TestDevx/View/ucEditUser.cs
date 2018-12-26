@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using TestDevx.Model;
+using TestDevx.Controller;
 
 namespace TestDevx
 {
@@ -62,7 +63,7 @@ namespace TestDevx
                 user1.username = txtUserName.Text;
                 user1.id = result.id;
                 user1.password = txtPassword.Text;
-                Controller.UserController.editUser(user1);
+                UserController.editUser(user1);
 
             }
             else
@@ -71,35 +72,13 @@ namespace TestDevx
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            user u = new user();
             string[] user = cbUsers.SelectedItem.ToString().Split('-');
             var result = userList.Find(x => x.id == int.Parse(user[0]));
             if (result.id.ToString() != "")
             {
-
-                using (var context = new STOK_TAKIPEntities())
-                {
-                    //get sql parameters for deleteuser procedure
-                    var userID = new SqlParameter("@userID", result.id);
-
-                    try
-                    {
-                        //execute deleteuser stored procedure
-                        context.Database.ExecuteSqlCommand("exec deleteUser @userID",
-                        userID);
-                        MessageBox.Show("The transaction was successful!");
-                        ucLoans.Instance = null;
-                        ucProduct.Instance = null;
-                        ucRemoveProduct.Instance = null;
-                        ucUndoProduct.Instance = null;
-                        ucDepartmentChief.Instance = null;
-                    }
-                    catch
-                    {
-                        MessageBox.Show("There are products with this user!");
-                    }
-
-                }
-
+                u.id = result.id;
+                UserController.deleteUser(u);
             }
             else
                 MessageBox.Show("You must fill the required fields!");
