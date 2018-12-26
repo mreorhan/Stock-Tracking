@@ -12,6 +12,7 @@ namespace TestDevx.Controller
 {
     public static class UserController
     {
+        // Login user check
         public static void checkUser(user model)
         {
             using (var context = new STOK_TAKIPEntities())
@@ -106,6 +107,33 @@ namespace TestDevx.Controller
                     {
                         MessageBox.Show("The transaction was failed!");
                     }
+                }
+
+            }
+        }
+        public static void deleteUser(user u)
+        {
+            using (var context = new STOK_TAKIPEntities())
+            {
+                //get sql parameters for deleteuser procedure
+                var userID = new SqlParameter("@userID", u.id);
+
+                try
+                {
+                    //execute deleteuser stored procedure
+                    context.Database.ExecuteSqlCommand("exec deleteUser @userID",
+                    userID);
+                    MessageBox.Show("The transaction was successful!");
+                    ucLoans.Instance = null;
+                    ucUsers.Instance = null;
+                    ucProduct.Instance = null;
+                    ucRemoveProduct.Instance = null;
+                    ucUndoProduct.Instance = null;
+                    ucDepartmentChief.Instance = null;
+                }
+                catch
+                {
+                    MessageBox.Show("There are products with this user!");
                 }
 
             }

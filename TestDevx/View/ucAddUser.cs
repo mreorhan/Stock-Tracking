@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using System.Security.Cryptography;
 using System.Globalization;
 using TestDevx.Model;
 
@@ -61,7 +52,10 @@ namespace TestDevx
                 user1.lastName = txtLastName.Text;
                 user1.password = txtPassword.Text;
                 user1.userTypeID = cbUserRole.SelectedIndex + 1;
+
+                //Call addUser method from controller
                 Controller.UserController.addUser(user1);
+
                 txtName.Text = "";
                 txtLastName.Text = "";
                 txtPassword.Text = "";
@@ -76,10 +70,10 @@ namespace TestDevx
 
         private void ucAddUser_Load(object sender, EventArgs e)
         {
+            // Get whole users from database
             STOK_TAKIPEntities db = new STOK_TAKIPEntities();
             foreach (var item in db.userTypes)
                     cbUserRole.Items.Add(item.userType1);
-           
         }
     }
 }

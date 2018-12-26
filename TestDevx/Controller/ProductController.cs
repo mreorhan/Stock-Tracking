@@ -40,5 +40,36 @@ namespace TestDevx.Controller
 
             }
         }
+
+        public static void editProduct(purchase purc, product p)
+        {
+
+            using (var context = new STOK_TAKIPEntities())
+            {
+                //get sql parameters for addLoan procedure
+                var productID = new SqlParameter("@productID", p.productID);
+                var productName = new SqlParameter("@productName", p.productName);
+                var productFeatures = new SqlParameter("@productFeatures", p.productFeatures);
+                var productPiece = new SqlParameter("@productPiece", purc.purchasePrice);
+
+                try
+                {
+                    //execute addLoan stored procedure
+                    context.Database.ExecuteSqlCommand("exec editProduct @productID , @productName , @productFeatures , @productPiece",
+                    productID, productName, productFeatures, productPiece);
+                    MessageBox.Show("The transaction was successful!");
+                    ucLoans.Instance = null;
+                    ucProduct.Instance = null;
+                    ucRemoveProduct.Instance = null;
+                    ucUndoProduct.Instance = null;
+                    ucDepartmentChief.Instance = null;
+                }
+                catch
+                {
+                    MessageBox.Show("The transaction was failed!");
+                }
+
+            }
+        }
     }
 }

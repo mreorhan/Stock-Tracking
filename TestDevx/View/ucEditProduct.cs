@@ -89,33 +89,16 @@ namespace TestDevx
             }
             var result = productList.Find(x => x.productName == cbProducts.SelectedItem.ToString());
 
-            using (var context = new STOK_TAKIPEntities())
-            {
-                //get sql parameters for addLoan procedure
-                var productID = new SqlParameter("@productID", result.productID);
-                var productName = new SqlParameter("@productName", txtProductName.Text);
-                var productFeatures = new SqlParameter("@productFeatures", txtProductFeatures.Text);
-                var productPiece = new SqlParameter("@productPiece", txtPiece.Text);
+            product p = new product();
+            p.productID = result.productID;
+            p.productName = txtProductName.Text;
+            p.productFeatures = txtProductFeatures.Text;
+            purchase purc = new purchase();
+            purc.purchasePrice = int.Parse(txtPiece.Text);
 
-                try
-                {
-                    //execute addLoan stored procedure
-                    context.Database.ExecuteSqlCommand("exec editProduct @productID , @productName , @productFeatures , @productPiece",
-                    productID, productName, productFeatures, productPiece);
-                    MessageBox.Show("The transaction was successful!");
-                    txtPiece.Text = "";
-                    ucLoans.Instance = null;
-                    ucProduct.Instance = null;
-                    ucRemoveProduct.Instance = null;
-                    ucUndoProduct.Instance = null;
-                    ucDepartmentChief.Instance = null;
-                }
-                catch
-                {
-                    MessageBox.Show("The transaction was failed!");
-                }
-
-            }
+            //Call editProduct method from controller
+            Controller.ProductController.editProduct(purc, p);
+            txtPiece.Text = "";
         }
     }
 }
