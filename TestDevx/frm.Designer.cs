@@ -413,7 +413,7 @@
             // 
             // barStaticItem1
             // 
-            this.barStaticItem1.Caption = "@mrecoder";
+            this.barStaticItem1.Caption = "@mreorhan";
             this.barStaticItem1.Id = 0;
             this.barStaticItem1.Name = "barStaticItem1";
             this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Far;
